@@ -164,7 +164,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-07.Pandas%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18.%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -178,7 +178,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-07.Pandas%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-07.Pandas数据预处理</a>
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18.%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-18.热力图绘制</a>
         </h2>
 
         <div class="post-meta">
@@ -218,10 +218,110 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas</span><br><span class="line">import numpy</span><br><span class="line">df_sales &#x3D; pandas.read_excel(&quot;sales.xlsx&quot;)</span><br><span class="line">print(df_sales.head())</span><br><span class="line">print(df_sales.shape)</span><br></pre></td></tr></table></figure>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">                  门店  区域         11月总销售        11月总毛利         目标销售     实际完成  \</span><br><span class="line">0  好药师大药房连锁有限公司团结新村店  蔡静  103617.600000  37506.576000  2898.394406  1643.08   </span><br><span class="line">1    武汉市好药师文华大药房有限公司  蔡静  136347.184988  46358.042896  3813.907272  3234.51   </span><br><span class="line">2    好药师大药房连锁有限公司七里店  蔡静  153700.000000  61480.000000  4299.300699  5682.10   </span><br><span class="line">3    好药师大药房连锁有限公司汉城店  蔡静  127200.000000  49544.400000  3558.041958  4836.00   </span><br><span class="line">4  好药师大药房连锁有限公司太子水榭店  蔡静   74200.000000  23744.000000  2075.524476   657.38   </span><br><span class="line"></span><br><span class="line">      销售完成率   实际完成.1  </span><br><span class="line">0  0.566893   528.70  </span><br><span class="line">1  0.848083  1085.40  </span><br><span class="line">2  1.321634  1728.18  </span><br><span class="line">3  1.359175  2116.98  </span><br><span class="line">4  0.316730     4.48  </span><br><span class="line">(48, 8)</span><br><span class="line"># 算数运算</span><br><span class="line">#print(df_sales[&quot;销售完成率&quot;]*100)</span><br><span class="line">new_column &#x3D; df_sales[&quot;目标销售&quot;]+df_sales[&quot;实际完成&quot;]</span><br><span class="line">df_sales[&#39;销售&#39;] &#x3D; new_column</span><br><span class="line">print(df_sales.shape)</span><br><span class="line">(48, 9)</span><br><span class="line">#取最大值</span><br><span class="line">print(df_sales[&quot;11月总毛利&quot;]&#x2F;df_sales[&quot;11月总毛利&quot;].max())</span><br><span class="line">0     0.085602</span><br><span class="line">1     0.105803</span><br><span class="line">2     0.140316</span><br><span class="line">3     0.113076</span><br><span class="line">4     0.054191</span><br><span class="line">5     0.047801</span><br><span class="line">6     0.244915</span><br><span class="line">7     1.000000</span><br><span class="line">8     0.027616</span><br><span class="line">9     0.051923</span><br><span class="line">10    0.125299</span><br><span class="line">11    0.156853</span><br><span class="line">12    0.205408</span><br><span class="line">13    0.280382</span><br><span class="line">14    0.205408</span><br><span class="line">15    0.066929</span><br><span class="line">16    0.251054</span><br><span class="line">17    0.116553</span><br><span class="line">18    0.124250</span><br><span class="line">19    0.067784</span><br><span class="line">20    0.057423</span><br><span class="line">21    0.000000</span><br><span class="line">22    0.212081</span><br><span class="line">23    0.064224</span><br><span class="line">24    0.136869</span><br><span class="line">25    0.000000</span><br><span class="line">26    0.693822</span><br><span class="line">27    0.337782</span><br><span class="line">28    0.089752</span><br><span class="line">29    0.000000</span><br><span class="line">30    0.139677</span><br><span class="line">31    0.073400</span><br><span class="line">32    0.198362</span><br><span class="line">33    0.145881</span><br><span class="line">34    0.109551</span><br><span class="line">35    0.035946</span><br><span class="line">36    0.087298</span><br><span class="line">37    0.284832</span><br><span class="line">38    0.240555</span><br><span class="line">39    0.086614</span><br><span class="line">40    0.353353</span><br><span class="line">41    0.077599</span><br><span class="line">42    0.156110</span><br><span class="line">43    0.102704</span><br><span class="line">44    0.077350</span><br><span class="line">45    0.090379</span><br><span class="line">46    0.120506</span><br><span class="line">47    0.048887</span><br><span class="line">Name: 11月总毛利, dtype: float64</span><br><span class="line">#排序</span><br><span class="line">df_sales.sort_values(&quot;11月总毛利&quot;,inplace&#x3D;True)</span><br><span class="line">print(df_sales[&quot;11月总毛利&quot;])</span><br><span class="line">29         0.000000</span><br><span class="line">25         0.000000</span><br><span class="line">21         0.000000</span><br><span class="line">8      12100.000000</span><br><span class="line">35     15750.000000</span><br><span class="line">5      20944.000000</span><br><span class="line">47     21420.000000</span><br><span class="line">9      22750.000000</span><br><span class="line">4      23744.000000</span><br><span class="line">20     25160.000000</span><br><span class="line">23     28139.925000</span><br><span class="line">15     29325.000000</span><br><span class="line">19     29699.610400</span><br><span class="line">31     32160.400000</span><br><span class="line">44     33891.000000</span><br><span class="line">41     34000.000000</span><br><span class="line">0      37506.576000</span><br><span class="line">39     37950.000000</span><br><span class="line">36     38250.000000</span><br><span class="line">28     39325.000000</span><br><span class="line">45     39600.000000</span><br><span class="line">43     45000.000000</span><br><span class="line">1      46358.042896</span><br><span class="line">34     48000.000000</span><br><span class="line">3      49544.400000</span><br><span class="line">17     51068.000000</span><br><span class="line">46     52800.000000</span><br><span class="line">18     54440.670000</span><br><span class="line">10     54900.080896</span><br><span class="line">24     59969.500000</span><br><span class="line">30     61200.000000</span><br><span class="line">2      61480.000000</span><br><span class="line">33     63918.000000</span><br><span class="line">42     68400.000000</span><br><span class="line">11     68725.552000</span><br><span class="line">32     86912.812541</span><br><span class="line">14     90000.000000</span><br><span class="line">12     90000.192024</span><br><span class="line">22     92923.865784</span><br><span class="line">38    105400.000000</span><br><span class="line">6     107310.000000</span><br><span class="line">16    110000.000000</span><br><span class="line">13    122850.000000</span><br><span class="line">37    124800.000000</span><br><span class="line">27    148000.000000</span><br><span class="line">40    154822.662039</span><br><span class="line">26    304000.000000</span><br><span class="line">7     438152.548219</span><br><span class="line">Name: 11月总毛利, dtype: float64</span><br><span class="line">#降序排列</span><br><span class="line">df_sales.sort_values(&quot;11月总毛利&quot;,inplace&#x3D;True,ascending&#x3D;False)</span><br><span class="line">print(df_sales[&quot;11月总毛利&quot;])</span><br><span class="line">7     438152.548219</span><br><span class="line">26    304000.000000</span><br><span class="line">40    154822.662039</span><br><span class="line">27    148000.000000</span><br><span class="line">37    124800.000000</span><br><span class="line">13    122850.000000</span><br><span class="line">16    110000.000000</span><br><span class="line">6     107310.000000</span><br><span class="line">38    105400.000000</span><br><span class="line">22     92923.865784</span><br><span class="line">12     90000.192024</span><br><span class="line">14     90000.000000</span><br><span class="line">32     86912.812541</span><br><span class="line">11     68725.552000</span><br><span class="line">42     68400.000000</span><br><span class="line">33     63918.000000</span><br><span class="line">2      61480.000000</span><br><span class="line">30     61200.000000</span><br><span class="line">24     59969.500000</span><br><span class="line">10     54900.080896</span><br><span class="line">18     54440.670000</span><br><span class="line">46     52800.000000</span><br><span class="line">17     51068.000000</span><br><span class="line">3      49544.400000</span><br><span class="line">34     48000.000000</span><br><span class="line">1      46358.042896</span><br><span class="line">43     45000.000000</span><br><span class="line">45     39600.000000</span><br><span class="line">28     39325.000000</span><br><span class="line">36     38250.000000</span><br><span class="line">39     37950.000000</span><br><span class="line">0      37506.576000</span><br><span class="line">41     34000.000000</span><br><span class="line">44     33891.000000</span><br><span class="line">31     32160.400000</span><br><span class="line">19     29699.610400</span><br><span class="line">15     29325.000000</span><br><span class="line">23     28139.925000</span><br><span class="line">20     25160.000000</span><br><span class="line">4      23744.000000</span><br><span class="line">9      22750.000000</span><br><span class="line">47     21420.000000</span><br><span class="line">5      20944.000000</span><br><span class="line">35     15750.000000</span><br><span class="line">8      12100.000000</span><br><span class="line">21         0.000000</span><br><span class="line">25         0.000000</span><br><span class="line">29         0.000000</span><br><span class="line">Name: 11月总毛利, dtype: float64</span><br><span class="line">#求每个区域当天实际总销售</span><br><span class="line">area_sales &#x3D; df_sales.pivot_table(index &#x3D; &quot;区域&quot;,values &#x3D; &quot;实际完成&quot;,aggfunc &#x3D; numpy.sum)</span><br><span class="line">print(area_sales.sort_values(&quot;实际完成&quot;))</span><br><span class="line">         实际完成</span><br><span class="line">区域           </span><br><span class="line">熊红萍   9546.41</span><br><span class="line">廖燕妮  29542.66</span><br><span class="line">胡萍   48549.48</span><br><span class="line">李宁   65614.81</span><br><span class="line">涂梦芸  75627.41</span><br><span class="line">蔡静   78091.85</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; np.random.rand(3,3)</span><br><span class="line">print(data)</span><br><span class="line">heatmap &#x3D; sns.heatmap(data)</span><br><span class="line">[[0.79738421 0.16230573 0.06197724]</span><br><span class="line"> [0.79989397 0.73146068 0.17731879]</span><br><span class="line"> [0.26202278 0.78645707 0.26536331]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10d042a90&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_1_2.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_1_2.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#设置数据最小值到最大值界限</span><br><span class="line">ax &#x3D;  sns.heatmap(data,vmin&#x3D;0.1,vmax&#x3D;0.5)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_2_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_2_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#当数据有正负时，可以指定以0为中心</span><br><span class="line">data &#x3D; np.random.randn(3,3)</span><br><span class="line">print(data)</span><br><span class="line">ax &#x3D; sns.heatmap(data,center&#x3D;0)</span><br><span class="line">[[ 0.65257565 -0.38550847  0.55620784]</span><br><span class="line"> [ 0.28429021 -1.68905002 -0.29115511]</span><br><span class="line"> [-1.09649997 -0.81622564  0.47706824]]</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_3_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flights &#x3D; sns.load_dataset(&quot;flights&quot;)</span><br><span class="line">flights.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">year</th>
+<th align="left">month</th>
+<th align="left">passengers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">1949</td>
+<td align="left">January</td>
+<td align="left">112</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">1949</td>
+<td align="left">February</td>
+<td align="left">118</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1949</td>
+<td align="left">March</td>
+<td align="left">132</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">1949</td>
+<td align="left">April</td>
+<td align="left">129</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">1949</td>
+<td align="left">May</td>
+<td align="left">121</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#数据转换</span><br><span class="line">flights &#x3D; flights.pivot(&quot;month&quot;,&quot;year&quot;,&quot;passengers&quot;)</span><br><span class="line">#热力图</span><br><span class="line">sns.heatmap(flights)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1a0a5ac8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_5_1.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_5_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#将数据显示在heatmap中，annot&#x3D;True,将fmt的值设置为&#39;d&#39;,否则数据会出现乱码。</span><br><span class="line">ax &#x3D; sns.heatmap(flights,annot&#x3D;True,fmt&#x3D;&#39;d&#39;)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_6_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_6_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#heatmap格与格之间增加间隙</span><br><span class="line">ax &#x3D; sns.heatmap(flights,linewidth&#x3D;0.5)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_7_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_7_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#设置自定义颜色</span><br><span class="line">ax &#x3D; sns.heatmap(flights,linewidth&#x3D;0.5,cmap&#x3D;&quot;YlGnBu&quot;)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_8_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_8_0.png" alt="png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a> <a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/heatmap/"># heatmap</a></p>
+
       
     </div>
 
@@ -240,7 +340,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14.%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17.FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -254,7 +354,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14.%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-14.单变量分析绘图</a>
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17.FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-17.FacetGrid使用方法及绘制多变量</a>
         </h2>
 
         <div class="post-meta">
@@ -294,266 +394,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">from scipy import stats,integrate</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib as mpt</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sns.set(color_codes &#x3D; True)</span><br><span class="line">x &#x3D; np.random.normal(size&#x3D;100)</span><br><span class="line">sns.distplot(x,kde&#x3D;False)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1510af28&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sns.distplot(x,bins&#x3D;20,kde&#x3D;False)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1505f860&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_2_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_2_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; np.random.gamma(6,size&#x3D;200)</span><br><span class="line">sns.distplot(x,kde&#x3D;False,fit&#x3D;stats.gamma)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a153a0240&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mean,cov &#x3D; [0,1],[(1,.5),(.5,1)]</span><br><span class="line">data &#x3D; np.random.multivariate_normal(mean,cov,200)</span><br><span class="line">df &#x3D; pd.DataFrame(data,columns&#x3D;[&quot;x&quot;,&quot;y&quot;])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tips&#x3D;sns.load_dataset(&quot;tips&quot;)</span><br><span class="line">tips.head()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -626,324 +470,92 @@
 <thead>
 <tr>
 <th align="left"></th>
-<th align="left">x</th>
-<th align="left">y</th>
+<th align="left">total_bill</th>
+<th align="left">tip</th>
+<th align="left">sex</th>
+<th align="left">smoker</th>
+<th align="left">day</th>
+<th align="left">time</th>
+<th align="left">size</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="left">0</td>
-<td align="left">-0.174087</td>
-<td align="left">1.795256</td>
+<td align="left">16.99</td>
+<td align="left">1.01</td>
+<td align="left">Female</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">2</td>
 </tr>
 <tr>
 <td align="left">1</td>
-<td align="left">-0.416757</td>
-<td align="left">0.638361</td>
+<td align="left">10.34</td>
+<td align="left">1.66</td>
+<td align="left">Male</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">3</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">-1.188138</td>
-<td align="left">-0.331589</td>
+<td align="left">21.01</td>
+<td align="left">3.50</td>
+<td align="left">Male</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">3</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">-0.609992</td>
-<td align="left">0.435072</td>
+<td align="left">23.68</td>
+<td align="left">3.31</td>
+<td align="left">Male</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">2</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">-1.839588</td>
-<td align="left">1.710629</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">-0.636881</td>
-<td align="left">0.890326</td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left">-0.833977</td>
-<td align="left">0.792370</td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left">1.789158</td>
-<td align="left">2.060371</td>
-</tr>
-<tr>
-<td align="left">8</td>
-<td align="left">1.156777</td>
-<td align="left">0.663219</td>
-</tr>
-<tr>
-<td align="left">9</td>
-<td align="left">0.423476</td>
-<td align="left">0.673290</td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left">-0.412169</td>
-<td align="left">0.751990</td>
-</tr>
-<tr>
-<td align="left">11</td>
-<td align="left">-1.126475</td>
-<td align="left">0.535133</td>
-</tr>
-<tr>
-<td align="left">12</td>
-<td align="left">1.323243</td>
-<td align="left">1.533676</td>
-</tr>
-<tr>
-<td align="left">13</td>
-<td align="left">-0.023044</td>
-<td align="left">-0.599542</td>
-</tr>
-<tr>
-<td align="left">14</td>
-<td align="left">0.691180</td>
-<td align="left">0.879479</td>
-</tr>
-<tr>
-<td align="left">15</td>
-<td align="left">1.478605</td>
-<td align="left">2.477569</td>
-</tr>
-<tr>
-<td align="left">16</td>
-<td align="left">-1.637043</td>
-<td align="left">-0.499630</td>
-</tr>
-<tr>
-<td align="left">17</td>
-<td align="left">-0.094884</td>
-<td align="left">2.142044</td>
-</tr>
-<tr>
-<td align="left">18</td>
-<td align="left">-0.989239</td>
-<td align="left">1.218270</td>
-</tr>
-<tr>
-<td align="left">19</td>
-<td align="left">1.420987</td>
-<td align="left">1.013807</td>
-</tr>
-<tr>
-<td align="left">20</td>
-<td align="left">0.360396</td>
-<td align="left">2.465208</td>
-</tr>
-<tr>
-<td align="left">21</td>
-<td align="left">1.358501</td>
-<td align="left">1.184887</td>
-</tr>
-<tr>
-<td align="left">22</td>
-<td align="left">2.339145</td>
-<td align="left">1.285469</td>
-</tr>
-<tr>
-<td align="left">23</td>
-<td align="left">1.282484</td>
-<td align="left">2.062299</td>
-</tr>
-<tr>
-<td align="left">24</td>
-<td align="left">0.854708</td>
-<td align="left">0.706735</td>
-</tr>
-<tr>
-<td align="left">25</td>
-<td align="left">-0.223393</td>
-<td align="left">-0.172632</td>
-</tr>
-<tr>
-<td align="left">26</td>
-<td align="left">-0.513652</td>
-<td align="left">0.535946</td>
-</tr>
-<tr>
-<td align="left">27</td>
-<td align="left">1.207449</td>
-<td align="left">1.181039</td>
-</tr>
-<tr>
-<td align="left">28</td>
-<td align="left">-1.219564</td>
-<td align="left">-1.178302</td>
-</tr>
-<tr>
-<td align="left">29</td>
-<td align="left">-0.855500</td>
-<td align="left">0.167194</td>
-</tr>
-<tr>
-<td align="left">…</td>
-<td align="left">…</td>
-<td align="left">…</td>
-</tr>
-<tr>
-<td align="left">170</td>
-<td align="left">1.022425</td>
-<td align="left">1.816807</td>
-</tr>
-<tr>
-<td align="left">171</td>
-<td align="left">0.344980</td>
-<td align="left">0.766577</td>
-</tr>
-<tr>
-<td align="left">172</td>
-<td align="left">1.043292</td>
-<td align="left">0.955718</td>
-</tr>
-<tr>
-<td align="left">173</td>
-<td align="left">0.765037</td>
-<td align="left">2.321773</td>
-</tr>
-<tr>
-<td align="left">174</td>
-<td align="left">0.683540</td>
-<td align="left">0.501221</td>
-</tr>
-<tr>
-<td align="left">175</td>
-<td align="left">1.188854</td>
-<td align="left">0.022803</td>
-</tr>
-<tr>
-<td align="left">176</td>
-<td align="left">-0.287907</td>
-<td align="left">-0.166137</td>
-</tr>
-<tr>
-<td align="left">177</td>
-<td align="left">-0.778977</td>
-<td align="left">0.036364</td>
-</tr>
-<tr>
-<td align="left">178</td>
-<td align="left">-1.875389</td>
-<td align="left">0.689938</td>
-</tr>
-<tr>
-<td align="left">179</td>
-<td align="left">0.183550</td>
-<td align="left">1.683339</td>
-</tr>
-<tr>
-<td align="left">180</td>
-<td align="left">0.220839</td>
-<td align="left">1.396213</td>
-</tr>
-<tr>
-<td align="left">181</td>
-<td align="left">0.660952</td>
-<td align="left">1.921363</td>
-</tr>
-<tr>
-<td align="left">182</td>
-<td align="left">-2.357542</td>
-<td align="left">1.145418</td>
-</tr>
-<tr>
-<td align="left">183</td>
-<td align="left">0.521454</td>
-<td align="left">0.304456</td>
-</tr>
-<tr>
-<td align="left">184</td>
-<td align="left">-0.321098</td>
-<td align="left">-1.072025</td>
-</tr>
-<tr>
-<td align="left">185</td>
-<td align="left">-0.265391</td>
-<td align="left">1.166742</td>
-</tr>
-<tr>
-<td align="left">186</td>
-<td align="left">1.182235</td>
-<td align="left">2.652254</td>
-</tr>
-<tr>
-<td align="left">187</td>
-<td align="left">0.920143</td>
-<td align="left">1.772478</td>
-</tr>
-<tr>
-<td align="left">188</td>
-<td align="left">0.620841</td>
-<td align="left">1.806727</td>
-</tr>
-<tr>
-<td align="left">189</td>
-<td align="left">-0.892951</td>
-<td align="left">0.177710</td>
-</tr>
-<tr>
-<td align="left">190</td>
-<td align="left">-0.463518</td>
-<td align="left">2.034266</td>
-</tr>
-<tr>
-<td align="left">191</td>
-<td align="left">-0.031959</td>
-<td align="left">0.967620</td>
-</tr>
-<tr>
-<td align="left">192</td>
-<td align="left">-0.412957</td>
-<td align="left">0.324511</td>
-</tr>
-<tr>
-<td align="left">193</td>
-<td align="left">-0.021698</td>
-<td align="left">0.949692</td>
-</tr>
-<tr>
-<td align="left">194</td>
-<td align="left">1.897446</td>
-<td align="left">2.806375</td>
-</tr>
-<tr>
-<td align="left">195</td>
-<td align="left">-0.346429</td>
-<td align="left">0.899780</td>
-</tr>
-<tr>
-<td align="left">196</td>
-<td align="left">-0.320803</td>
-<td align="left">-0.144683</td>
-</tr>
-<tr>
-<td align="left">197</td>
-<td align="left">-0.332870</td>
-<td align="left">0.751261</td>
-</tr>
-<tr>
-<td align="left">198</td>
-<td align="left">-0.579072</td>
-<td align="left">0.318083</td>
-</tr>
-<tr>
-<td align="left">199</td>
-<td align="left">-0.889261</td>
-<td align="left">0.091241</td>
+<td align="left">24.59</td>
+<td align="left">3.61</td>
+<td align="left">Female</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">4</td>
 </tr>
 </tbody></table>
-<p>200 rows × 2 columns</p>
-<p>观察两个变量之间的分布关系最好用散点图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(x&#x3D;&quot;x&quot;,y&#x3D;&quot;y&quot;,data&#x3D;df)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;seaborn.axisgrid.JointGrid at 0x1a22fb1cf8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x,y &#x3D; np.random.multivariate_normal(mean,cov,1000).T</span><br><span class="line">with sns.axes_style(&quot;white&quot;):</span><br><span class="line">    sns.jointplot(x&#x3D;x,y&#x3D;y,data&#x3D;df,kind&#x3D;&quot;hex&quot;,color&#x3D;&#39;k&#39;)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iris &#x3D; sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">sns.pairplot(iris)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a23d144e0&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;sns.FacetGrid(tips,col&#x3D;&quot;time&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1155f0f0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_2_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_2_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;sns.FacetGrid(tips,col&#x3D;&quot;time&quot;)</span><br><span class="line">g.map(plt.hist,&quot;total_bill&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1d6a5748&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_3_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.FacetGrid(tips,col&#x3D;&quot;sex&quot;,hue&#x3D;&quot;smoker&quot;)</span><br><span class="line">g.map(plt.scatter,&quot;total_bill&quot;,&quot;tip&quot;,alpha&#x3D;0.7)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1e19c0f0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_4_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_4_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.FacetGrid(tips,col&#x3D;&quot;time&quot;,row&#x3D;&quot;smoker&quot;,margin_titles&#x3D;True)</span><br><span class="line">g.map(sns.regplot,&quot;size&quot;,&quot;total_bill&quot;,color&#x3D;&quot;0.3&quot;,fit_reg&#x3D;False,x_jitter&#x3D;0.1)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1eb23d68&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_5_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_5_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.FacetGrid(tips,col&#x3D;&quot;day&quot;,size&#x3D;4,aspect&#x3D;0.5)</span><br><span class="line">g.map(sns.barplot,&quot;sex&quot;,&quot;total_bill&quot;)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;seaborn&#x2F;axisgrid.py:703: UserWarning: Using the barplot function without specifying &#96;order&#96; is likely to produce an incorrect plot.</span><br><span class="line">  warnings.warn(warning)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a21180d30&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_6_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_6_2.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from pandas import Categorical</span><br><span class="line">order_days &#x3D; tips.day.value_counts().index</span><br><span class="line">print(order_days)</span><br><span class="line">order_days &#x3D; Categorical([&quot;Thur&quot;,&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;])</span><br><span class="line">g &#x3D; sns.FacetGrid(tips,row&#x3D;&quot;day&quot;,row_order&#x3D;order_days,size&#x3D;1.7,aspect&#x3D;4)</span><br><span class="line">g.map(sns.boxplot,&quot;total_bill&quot;)</span><br><span class="line">CategoricalIndex([&#39;Sat&#39;, &#39;Sun&#39;, &#39;Thur&#39;, &#39;Fri&#39;], categories&#x3D;[&#39;Thur&#39;, &#39;Fri&#39;, &#39;Sat&#39;, &#39;Sun&#39;], ordered&#x3D;False, dtype&#x3D;&#39;category&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;seaborn&#x2F;axisgrid.py:703: UserWarning: Using the boxplot function without specifying &#96;order&#96; is likely to produce an incorrect plot.</span><br><span class="line">  warnings.warn(warning)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1e4168d0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_7_3.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_7_3.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pal &#x3D; dict(Lunch&#x3D;&quot;seagreen&quot;,Dinner&#x3D;&quot;blue&quot;)</span><br><span class="line">g &#x3D; sns.FacetGrid(tips,hue&#x3D;&quot;time&quot;,palette&#x3D;pal,size&#x3D;5)</span><br><span class="line">g.map(plt.scatter,&quot;total_bill&quot;,&quot;tip&quot;,s&#x3D;50,alpha&#x3D;0.7,linewidth&#x3D;0.5,edgecolor&#x3D;&quot;white&quot;)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a2201f8d0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_8_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_8_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with sns.axes_style(&quot;white&quot;):</span><br><span class="line">    g&#x3D;sns.FacetGrid(tips,row&#x3D;&quot;sex&quot;,col&#x3D;&quot;smoker&quot;,margin_titles&#x3D;True,size&#x3D;2.5)</span><br><span class="line">g.map(plt.scatter,&quot;total_bill&quot;,&quot;tip&quot;,color&#x3D;&quot;#334488&quot;,edgecolor&#x3D;&quot;white&quot;,lw&#x3D;0.5)</span><br><span class="line">g.set_axis_labels(&quot;total_bill(Us dollar)&quot;,&quot;tips&quot;)</span><br><span class="line">g.set(xticks&#x3D;[10,30,50],yticks&#x3D;[2,6,10])</span><br><span class="line">g.fig.subplots_adjust(wspace&#x3D;0.02,hspace&#x3D;0.02)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_9_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_9_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iris &#x3D; sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">g &#x3D; sns.PairGrid(iris)</span><br><span class="line">g.map(plt.scatter)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a21f379e8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_10_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_10_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(iris)</span><br><span class="line">g.map_diag(plt.hist)</span><br><span class="line">g.map_offdiag(plt.scatter)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a21a84b00&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_11_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_11_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(iris,hue&#x3D;&quot;species&quot;)</span><br><span class="line">g.map_diag(plt.hist)</span><br><span class="line">g.map_offdiag(plt.scatter)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a23793860&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_12_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_12_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(iris,hue&#x3D;&quot;species&quot;,vars&#x3D;[&quot;sepal_length&quot;,&quot;sepal_width&quot;])</span><br><span class="line">g.map(plt.scatter)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a24382550&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_13_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_13_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(tips,hue&#x3D;&quot;size&quot;,palette&#x3D;&quot;GnBu_d&quot;)</span><br><span class="line">g.map(plt.scatter,s&#x3D;50,edgecolor&#x3D;&quot;white&quot;)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a26982c88&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_14_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_14_1.png" alt="png"></a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a></p>
 
       
@@ -964,7 +576,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16.%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13.%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -978,7 +590,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16.%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-16.多变量分析绘图</a>
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13.%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-13.调色板及颜色设置</a>
         </h2>
 
         <div class="post-meta">
@@ -1018,38 +630,111 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib as mpl</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">sns.set(style &#x3D; &quot;whitegrid&quot;,color_codes&#x3D;True)</span><br></pre></td></tr></table></figure>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line">%matplotlib inline</span><br><span class="line">sns.set(rc&#x3D;&#123;&#39;figure.figsize&#39;:(6,6)&#125;)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tips &#x3D; sns.load_dataset(&quot;tips&quot;)</span><br><span class="line">iris &#x3D; sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">titanic &#x3D; sns.load_dataset(&quot;titanic&quot;)</span><br><span class="line">sns.stripplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10de58518&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_1.png" alt="png"></a></p>
-<p>重叠很正常，但是影响观察数据量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.stripplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips,jitter&#x3D;True)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x108208b00&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.swarmplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1ac1a7b8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_4_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_4_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.swarmplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;sex&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1ac68d30&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_5_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_5_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x&#x3D;&quot;total_bill&quot;,y&#x3D;&quot;day&quot;,hue&#x3D;&quot;time&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1ad26390&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x&#x3D;&quot;total_bill&quot;,y&#x3D;&quot;day&quot;,hue&#x3D;&quot;sex&quot;,data&#x3D;tips,split&#x3D;True)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1af157b8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips,inner&#x3D;None)</span><br><span class="line">sns.swarmplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips,color&#x3D;&#39;w&#39;,alpha&#x3D;0.5)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1b4a4f60&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">titanic</span><br><span class="line">sns.barplot(x&#x3D;&quot;sex&quot;,y&#x3D;&quot;survived&quot;,data&#x3D;titanic,hue&#x3D;&quot;class&quot;)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1b7ba0b8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_9_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_9_1.png" alt="png"></a></p>
-<p>点图可以很好的描绘数据的差异</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.pointplot(x&#x3D;&quot;sex&quot;,y&#x3D;&quot;survived&quot;,hue &#x3D; &quot;class&quot;,data&#x3D;titanic)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1b9f2860&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_11_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_11_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#多层面板分类图</span><br><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1b884d30&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_12_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_12_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips,kind&#x3D;&quot;bar&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1bb5b710&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_13_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_13_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips,kind&#x3D;&quot;swarm&quot;,col&#x3D;&quot;time&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1be4dac8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_14_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_14_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips,kind&#x3D;&quot;box&quot;,col&#x3D;&quot;day&quot;,size&#x3D;4,aspect&#x3D;0.5)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1c0a5588&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_15_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_15_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">current_palette &#x3D; sns.color_palette()</span><br><span class="line">sns.palplot(current_palette)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_1_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_1_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.palplot(sns.color_palette(&quot;hls&quot;,8))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_2_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_2_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; np.random.normal(size&#x3D;(20,6))+np.arange(6)&#x2F;2</span><br><span class="line">sns.boxplot(data&#x3D;data,palette&#x3D;sns.color_palette(&quot;hls&quot;,8))</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a2397bc18&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_3_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sns.palplot(sns.hls_palette(8,l&#x3D;5,s&#x3D;9))</span><br></pre></td></tr></table></figure>
+<p>sns.palplot(sns.color_palette(“Paired”,20))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.palplot(sns.color_palette(&quot;Blues&quot;))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_6_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_6_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.palplot(sns.color_palette(&quot;BuGn_r&quot;))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_7_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_7_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#线性调色板</span><br><span class="line">sns.palplot(sns.color_palette(&quot;cubehelix&quot;,8))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_8_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_8_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.palplot(sns.light_palette(&quot;green&quot;))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_9_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_9_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.palplot(sns.dark_palette(&quot;green&quot;))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_10_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_10_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#由深到浅</span><br><span class="line">sns.palplot(sns.light_palette(&quot;green&quot;,reverse&#x3D;True))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_11_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_11_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x,y&#x3D;np.random.multivariate_normal([0,0],[[1,-0.5],[-0.5,1]],size&#x3D;300).T</span><br><span class="line">pal &#x3D; sns.dark_palette(&quot;green&quot;,as_cmap&#x3D;True)</span><br><span class="line">sns.kdeplot(x,y,cmap&#x3D;pal)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a25409eb8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_12_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-13-%E8%B0%83%E8%89%B2%E6%9D%BF%E5%8F%8A%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE%E2%80%9D/output_12_1.png" alt="png"></a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-19.%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="千里之行，始于足下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猎头Carlos的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-19.%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-19.线性回归</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-29 11:09:32" itemprop="dateModified" datetime="2021-01-29T11:09:32+08:00">2021-01-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn import datasets</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class LinearRegression():</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.w&#x3D;None</span><br><span class="line">    </span><br><span class="line">    def fit(self,X,y):</span><br><span class="line">        print(X.shape)</span><br><span class="line">        X&#x3D;np.insert(X,0,1,axis&#x3D;1)</span><br><span class="line">        print(X.shape)</span><br><span class="line">        X_&#x3D;np.linalg.inv(X.T.dot(X))</span><br><span class="line">        self.w &#x3D; X_.dot(X.T).dot(y)</span><br><span class="line">    </span><br><span class="line">    def predict(self,X):</span><br><span class="line">        X&#x3D;np.insert(X,0,1,axis&#x3D;1)</span><br><span class="line">        y_pred &#x3D; X.dot(self.w)</span><br><span class="line">        return y_pred</span><br><span class="line"></span><br><span class="line">    def mean_squared_error(y_true,y_pred):</span><br><span class="line">        mse &#x3D; np.mean(np.power(y_true-y_pred,2))</span><br><span class="line">        return mse</span><br><span class="line">    </span><br><span class="line">def main():</span><br><span class="line">    diabetes &#x3D; datasets.load_diabetes()</span><br><span class="line">    X &#x3D; diabetes.data[:,np.newaxis,2]</span><br><span class="line">    print(X.shape)</span><br><span class="line">    x_train,x_test &#x3D; X[:-20],X[-20:]</span><br><span class="line">    y_train,y_test &#x3D; diabetes.target[:-20],diabetes.target[-20:]</span><br><span class="line">        </span><br><span class="line">    clf &#x3D; LinearRegression()</span><br><span class="line">    clf.fit(x_train,y_train)</span><br><span class="line">    y_pred &#x3D; clf.predict(x_test)</span><br><span class="line">        </span><br><span class="line">    plt.scatter(x_test[:,0],y_test,color&#x3D;&#39;black&#39;)</span><br><span class="line">    plt.plot(x_test[:,0],y_pred,color&#x3D;&#39;blue&#39;,linewidth&#x3D;3)</span><br><span class="line">    plt.show()</span><br><span class="line">main()</span><br><span class="line">(442, 1)</span><br><span class="line">(422, 1)</span><br><span class="line">(422, 2)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/11/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-19-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E2%80%9D/output_2_1.png"><img src="https://www.cishao.cn/2018/12/11/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-19-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E2%80%9D/output_2_1.png" alt="png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"># 线性回归</a></p>
 
       
     </div>
@@ -3001,182 +2686,6 @@
 </tbody></table>
 <p>714 rows × 12 columns</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br></pre></td><td class="code"><pre><span class="line">#通过行和列定位</span><br><span class="line">data.loc[83,&quot;Name&quot;]</span><br><span class="line">&#39;Carrau, Mr. Francisco M&#39;</span><br><span class="line">#sort_values排序</span><br><span class="line">new_data &#x3D; data.sort_values(&#39;Age&#39;,ascending&#x3D;False)</span><br><span class="line">print(new_data[0:10])</span><br><span class="line">print(&quot;------&quot;)</span><br><span class="line">#对序号重新生成</span><br><span class="line">new_reindexed &#x3D; new_data.reset_index(drop&#x3D;True)</span><br><span class="line">print(new_reindexed[0:10])</span><br><span class="line">     PassengerId  Survived  Pclass                                  Name  \</span><br><span class="line">630          631         1       1  Barkworth, Mr. Algernon Henry Wilson   </span><br><span class="line">851          852         0       3                   Svensson, Mr. Johan   </span><br><span class="line">493          494         0       1               Artagaveytia, Mr. Ramon   </span><br><span class="line">96            97         0       1             Goldschmidt, Mr. George B   </span><br><span class="line">116          117         0       3                  Connors, Mr. Patrick   </span><br><span class="line">672          673         0       2           Mitchell, Mr. Henry Michael   </span><br><span class="line">745          746         0       1          Crosby, Capt. Edward Gifford   </span><br><span class="line">33            34         0       2                 Wheadon, Mr. Edward H   </span><br><span class="line">54            55         0       1        Ostby, Mr. Engelhart Cornelius   </span><br><span class="line">280          281         0       3                      Duane, Mr. Frank   </span><br><span class="line"></span><br><span class="line">      Sex   Age  SibSp  Parch      Ticket     Fare Cabin Embarked  </span><br><span class="line">630  male  80.0      0      0       27042  30.0000   A23        S  </span><br><span class="line">851  male  74.0      0      0      347060   7.7750   NaN        S  </span><br><span class="line">493  male  71.0      0      0    PC 17609  49.5042   NaN        C  </span><br><span class="line">96   male  71.0      0      0    PC 17754  34.6542    A5        C  </span><br><span class="line">116  male  70.5      0      0      370369   7.7500   NaN        Q  </span><br><span class="line">672  male  70.0      0      0  C.A. 24580  10.5000   NaN        S  </span><br><span class="line">745  male  70.0      1      1   WE&#x2F;P 5735  71.0000   B22        S  </span><br><span class="line">33   male  66.0      0      0  C.A. 24579  10.5000   NaN        S  </span><br><span class="line">54   male  65.0      0      1      113509  61.9792   B30        C  </span><br><span class="line">280  male  65.0      0      0      336439   7.7500   NaN        Q  </span><br><span class="line">------</span><br><span class="line">   PassengerId  Survived  Pclass                                  Name   Sex  \</span><br><span class="line">0          631         1       1  Barkworth, Mr. Algernon Henry Wilson  male   </span><br><span class="line">1          852         0       3                   Svensson, Mr. Johan  male   </span><br><span class="line">2          494         0       1               Artagaveytia, Mr. Ramon  male   </span><br><span class="line">3           97         0       1             Goldschmidt, Mr. George B  male   </span><br><span class="line">4          117         0       3                  Connors, Mr. Patrick  male   </span><br><span class="line">5          673         0       2           Mitchell, Mr. Henry Michael  male   </span><br><span class="line">6          746         0       1          Crosby, Capt. Edward Gifford  male   </span><br><span class="line">7           34         0       2                 Wheadon, Mr. Edward H  male   </span><br><span class="line">8           55         0       1        Ostby, Mr. Engelhart Cornelius  male   </span><br><span class="line">9          281         0       3                      Duane, Mr. Frank  male   </span><br><span class="line"></span><br><span class="line">    Age  SibSp  Parch      Ticket     Fare Cabin Embarked  </span><br><span class="line">0  80.0      0      0       27042  30.0000   A23        S  </span><br><span class="line">1  74.0      0      0      347060   7.7750   NaN        S  </span><br><span class="line">2  71.0      0      0    PC 17609  49.5042   NaN        C  </span><br><span class="line">3  71.0      0      0    PC 17754  34.6542    A5        C  </span><br><span class="line">4  70.5      0      0      370369   7.7500   NaN        Q  </span><br><span class="line">5  70.0      0      0  C.A. 24580  10.5000   NaN        S  </span><br><span class="line">6  70.0      1      1   WE&#x2F;P 5735  71.0000   B22        S  </span><br><span class="line">7  66.0      0      0  C.A. 24579  10.5000   NaN        S  </span><br><span class="line">8  65.0      0      1      113509  61.9792   B30        C  </span><br><span class="line">9  65.0      0      0      336439   7.7500   NaN        Q  </span><br><span class="line"># 结合apply()使用自定义函数</span><br><span class="line">def hundredth_row(column):</span><br><span class="line">    hundredth_item &#x3D; column.loc[99]</span><br><span class="line">    return hundredth_item</span><br><span class="line"></span><br><span class="line">hundredth_row &#x3D; data.apply(hundredth_row)</span><br><span class="line">print(hundredth_row)</span><br><span class="line">PassengerId                  100</span><br><span class="line">Survived                       0</span><br><span class="line">Pclass                         2</span><br><span class="line">Name           Kantor, Mr. Sinai</span><br><span class="line">Sex                         male</span><br><span class="line">Age                           34</span><br><span class="line">SibSp                          1</span><br><span class="line">Parch                          0</span><br><span class="line">Ticket                    244367</span><br><span class="line">Fare                          26</span><br><span class="line">Cabin                        NaN</span><br><span class="line">Embarked                       S</span><br><span class="line">dtype: object</span><br><span class="line">def not_null_count(column):</span><br><span class="line">    column_null &#x3D; pd.isnull(column)</span><br><span class="line">    null &#x3D; column[column_null]</span><br><span class="line">    return len(null)</span><br><span class="line">not_null_counts &#x3D; data.apply(not_null_count)</span><br><span class="line">print(not_null_counts)</span><br><span class="line">PassengerId      0</span><br><span class="line">Survived         0</span><br><span class="line">Pclass           0</span><br><span class="line">Name             0</span><br><span class="line">Sex              0</span><br><span class="line">Age            177</span><br><span class="line">SibSp            0</span><br><span class="line">Parch            0</span><br><span class="line">Ticket           0</span><br><span class="line">Fare             0</span><br><span class="line">Cabin          687</span><br><span class="line">Embarked         2</span><br><span class="line">dtype: int64</span><br><span class="line">def which_class(row):</span><br><span class="line">    pclass &#x3D; row[&#39;Pclass&#39;]</span><br><span class="line">    if pd.isnull(pclass):</span><br><span class="line">        return &quot;Unknow&quot;</span><br><span class="line">    if pclass &#x3D;&#x3D; 1:</span><br><span class="line">        return &quot;一等舱&quot;</span><br><span class="line">    if pclass &#x3D;&#x3D; 2:</span><br><span class="line">        return &quot;二等舱&quot;</span><br><span class="line">    if pclass &#x3D;&#x3D; 3:</span><br><span class="line">        return &quot;三等舱&quot;</span><br><span class="line">    </span><br><span class="line">pclass &#x3D; data.apply(which_class,axis&#x3D;1)</span><br><span class="line">print(pclass)</span><br><span class="line">0      三等舱</span><br><span class="line">1      一等舱</span><br><span class="line">2      三等舱</span><br><span class="line">3      一等舱</span><br><span class="line">4      三等舱</span><br><span class="line">5      三等舱</span><br><span class="line">6      一等舱</span><br><span class="line">7      三等舱</span><br><span class="line">8      三等舱</span><br><span class="line">9      二等舱</span><br><span class="line">10     三等舱</span><br><span class="line">11     一等舱</span><br><span class="line">12     三等舱</span><br><span class="line">13     三等舱</span><br><span class="line">14     三等舱</span><br><span class="line">15     二等舱</span><br><span class="line">16     三等舱</span><br><span class="line">17     二等舱</span><br><span class="line">18     三等舱</span><br><span class="line">19     三等舱</span><br><span class="line">20     二等舱</span><br><span class="line">21     二等舱</span><br><span class="line">22     三等舱</span><br><span class="line">23     一等舱</span><br><span class="line">24     三等舱</span><br><span class="line">25     三等舱</span><br><span class="line">26     三等舱</span><br><span class="line">27     一等舱</span><br><span class="line">28     三等舱</span><br><span class="line">29     三等舱</span><br><span class="line">      ... </span><br><span class="line">861    二等舱</span><br><span class="line">862    一等舱</span><br><span class="line">863    三等舱</span><br><span class="line">864    二等舱</span><br><span class="line">865    二等舱</span><br><span class="line">866    二等舱</span><br><span class="line">867    一等舱</span><br><span class="line">868    三等舱</span><br><span class="line">869    三等舱</span><br><span class="line">870    三等舱</span><br><span class="line">871    一等舱</span><br><span class="line">872    一等舱</span><br><span class="line">873    三等舱</span><br><span class="line">874    二等舱</span><br><span class="line">875    三等舱</span><br><span class="line">876    三等舱</span><br><span class="line">877    三等舱</span><br><span class="line">878    三等舱</span><br><span class="line">879    一等舱</span><br><span class="line">880    二等舱</span><br><span class="line">881    三等舱</span><br><span class="line">882    三等舱</span><br><span class="line">883    二等舱</span><br><span class="line">884    三等舱</span><br><span class="line">885    三等舱</span><br><span class="line">886    二等舱</span><br><span class="line">887    一等舱</span><br><span class="line">888    三等舱</span><br><span class="line">889    一等舱</span><br><span class="line">890    三等舱</span><br><span class="line">Length: 891, dtype: object</span><br><span class="line">def generate_age_lable(row):</span><br><span class="line">    age &#x3D; row[&#39;Age&#39;]</span><br><span class="line">    if pd.isnull(age):</span><br><span class="line">        return &quot;Unknown&quot;</span><br><span class="line">    elif age &lt;18:</span><br><span class="line">        return &quot;未成年人&quot;</span><br><span class="line">    else:</span><br><span class="line">        return &quot;成年人&quot;</span><br><span class="line">    </span><br><span class="line">age_lable &#x3D; data.apply(generate_age_lable,axis &#x3D; 1)</span><br><span class="line">print(age_lable)</span><br><span class="line">data[&#39;age_lable&#39;] &#x3D; age_lable</span><br><span class="line">age_group_survival &#x3D; data.pivot_table(index&#x3D;&quot;age_lable&quot;, values &#x3D; &quot;Survived&quot;,aggfunc&#x3D;np.mean)</span><br><span class="line">print(age_group_survival)</span><br><span class="line">0          成年人</span><br><span class="line">1          成年人</span><br><span class="line">2          成年人</span><br><span class="line">3          成年人</span><br><span class="line">4          成年人</span><br><span class="line">5      Unknown</span><br><span class="line">6          成年人</span><br><span class="line">7         未成年人</span><br><span class="line">8          成年人</span><br><span class="line">9         未成年人</span><br><span class="line">10        未成年人</span><br><span class="line">11         成年人</span><br><span class="line">12         成年人</span><br><span class="line">13         成年人</span><br><span class="line">14        未成年人</span><br><span class="line">15         成年人</span><br><span class="line">16        未成年人</span><br><span class="line">17     Unknown</span><br><span class="line">18         成年人</span><br><span class="line">19     Unknown</span><br><span class="line">20         成年人</span><br><span class="line">21         成年人</span><br><span class="line">22        未成年人</span><br><span class="line">23         成年人</span><br><span class="line">24        未成年人</span><br><span class="line">25         成年人</span><br><span class="line">26     Unknown</span><br><span class="line">27         成年人</span><br><span class="line">28     Unknown</span><br><span class="line">29     Unknown</span><br><span class="line">        ...   </span><br><span class="line">861        成年人</span><br><span class="line">862        成年人</span><br><span class="line">863    Unknown</span><br><span class="line">864        成年人</span><br><span class="line">865        成年人</span><br><span class="line">866        成年人</span><br><span class="line">867        成年人</span><br><span class="line">868    Unknown</span><br><span class="line">869       未成年人</span><br><span class="line">870        成年人</span><br><span class="line">871        成年人</span><br><span class="line">872        成年人</span><br><span class="line">873        成年人</span><br><span class="line">874        成年人</span><br><span class="line">875       未成年人</span><br><span class="line">876        成年人</span><br><span class="line">877        成年人</span><br><span class="line">878    Unknown</span><br><span class="line">879        成年人</span><br><span class="line">880        成年人</span><br><span class="line">881        成年人</span><br><span class="line">882        成年人</span><br><span class="line">883        成年人</span><br><span class="line">884        成年人</span><br><span class="line">885        成年人</span><br><span class="line">886        成年人</span><br><span class="line">887        成年人</span><br><span class="line">888    Unknown</span><br><span class="line">889        成年人</span><br><span class="line">890        成年人</span><br><span class="line">Length: 891, dtype: object</span><br><span class="line">           Survived</span><br><span class="line">age_lable          </span><br><span class="line">Unknown    0.293785</span><br><span class="line">成年人        0.381032</span><br><span class="line">未成年人       0.539823</span><br><span class="line"># 性别与获救比例的关系</span><br><span class="line">sex_survival &#x3D; data.pivot_table(index &#x3D; &quot;Sex&quot;,values&#x3D;&quot;Survived&quot;,aggfunc &#x3D; np.mean)</span><br><span class="line">print(sex_survival)</span><br><span class="line">        Survived</span><br><span class="line">Sex             </span><br><span class="line">female  0.742038</span><br><span class="line">male    0.188908</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18.%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Carlos">
-      <meta itemprop="description" content="千里之行，始于足下。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="猎头Carlos的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18.%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-18.热力图绘制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+08:00">2018-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-29 11:09:32" itemprop="dateModified" datetime="2021-01-29T11:09:32+08:00">2021-01-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; np.random.rand(3,3)</span><br><span class="line">print(data)</span><br><span class="line">heatmap &#x3D; sns.heatmap(data)</span><br><span class="line">[[0.79738421 0.16230573 0.06197724]</span><br><span class="line"> [0.79989397 0.73146068 0.17731879]</span><br><span class="line"> [0.26202278 0.78645707 0.26536331]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10d042a90&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_1_2.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_1_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#设置数据最小值到最大值界限</span><br><span class="line">ax &#x3D;  sns.heatmap(data,vmin&#x3D;0.1,vmax&#x3D;0.5)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_2_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_2_0.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#当数据有正负时，可以指定以0为中心</span><br><span class="line">data &#x3D; np.random.randn(3,3)</span><br><span class="line">print(data)</span><br><span class="line">ax &#x3D; sns.heatmap(data,center&#x3D;0)</span><br><span class="line">[[ 0.65257565 -0.38550847  0.55620784]</span><br><span class="line"> [ 0.28429021 -1.68905002 -0.29115511]</span><br><span class="line"> [-1.09649997 -0.81622564  0.47706824]]</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_3_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flights &#x3D; sns.load_dataset(&quot;flights&quot;)</span><br><span class="line">flights.head()</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">year</th>
-<th align="left">month</th>
-<th align="left">passengers</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0</td>
-<td align="left">1949</td>
-<td align="left">January</td>
-<td align="left">112</td>
-</tr>
-<tr>
-<td align="left">1</td>
-<td align="left">1949</td>
-<td align="left">February</td>
-<td align="left">118</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">1949</td>
-<td align="left">March</td>
-<td align="left">132</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">1949</td>
-<td align="left">April</td>
-<td align="left">129</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">1949</td>
-<td align="left">May</td>
-<td align="left">121</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#数据转换</span><br><span class="line">flights &#x3D; flights.pivot(&quot;month&quot;,&quot;year&quot;,&quot;passengers&quot;)</span><br><span class="line">#热力图</span><br><span class="line">sns.heatmap(flights)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1a0a5ac8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_5_1.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_5_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#将数据显示在heatmap中，annot&#x3D;True,将fmt的值设置为&#39;d&#39;,否则数据会出现乱码。</span><br><span class="line">ax &#x3D; sns.heatmap(flights,annot&#x3D;True,fmt&#x3D;&#39;d&#39;)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_6_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_6_0.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#heatmap格与格之间增加间隙</span><br><span class="line">ax &#x3D; sns.heatmap(flights,linewidth&#x3D;0.5)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_7_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_7_0.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#设置自定义颜色</span><br><span class="line">ax &#x3D; sns.heatmap(flights,linewidth&#x3D;0.5,cmap&#x3D;&quot;YlGnBu&quot;)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_8_0.png"><img src="https://www.cishao.cn/2018/12/08/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18-%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_8_0.png" alt="png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a> <a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/heatmap/"># heatmap</a></p>
-
       
     </div>
 
