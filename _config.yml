@@ -156,5 +156,5 @@ backup:
     type: git
     theme: next
     repository:
-       github: git@github.com:carloszo/carloszo.git,source
+       github: git@github.com:carloszo/carloszo.github.io,source
 
