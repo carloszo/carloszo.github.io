@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="pandas," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="123456789101112import pandas as pdimport numpy as npdata =  pd.read_csv(&quot;train.csv&quot;)age = data[&apos;Age&apos;]#print(data.head())#print(data[&apos;Age&apos;])#isnull()判断值是否为NaNage_is_null = pd.isnull(age)age_null_true =">
+<meta name="keywords" content="pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“python数据分析与机器学习实战-08.Pandas自定义函数”">
+<meta property="og:url" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-08-Pandas自定义函数”/index.html">
+<meta property="og:site_name" content="Carlos">
+<meta property="og:description" content="123456789101112import pandas as pdimport numpy as npdata =  pd.read_csv(&quot;train.csv&quot;)age = data[&apos;Age&apos;]#print(data.head())#print(data[&apos;Age&apos;])#isnull()判断值是否为NaNage_is_null = pd.isnull(age)age_null_true =">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-07T05:15:19.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“python数据分析与机器学习实战-08.Pandas自定义函数”">
+<meta name="twitter:description" content="123456789101112import pandas as pdimport numpy as npdata =  pd.read_csv(&quot;train.csv&quot;)age = data[&apos;Age&apos;]#print(data.head())#print(data[&apos;Age&apos;])#isnull()判断值是否为NaNage_is_null = pd.isnull(age)age_null_true =">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-08-Pandas自定义函数”/"/>
+
+
+
+
+
+  <title>“python数据分析与机器学习实战-08.Pandas自定义函数” | Carlos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Carlos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-08-Pandas自定义函数”/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carlos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“python数据分析与机器学习实战-08.Pandas自定义函数”</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T13:12:38+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据分析/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data =  pd.read_csv(<span class="string">"train.csv"</span>)</span><br><span class="line">age = data[<span class="string">'Age'</span>]</span><br><span class="line"><span class="comment">#print(data.head())</span></span><br><span class="line"><span class="comment">#print(data['Age'])</span></span><br><span class="line"><span class="comment">#isnull()判断值是否为NaN</span></span><br><span class="line">age_is_null = pd.isnull(age)</span><br><span class="line">age_null_true = age[age_is_null]</span><br><span class="line"><span class="comment">#print(age_is_null)</span></span><br><span class="line"><span class="comment">#print(age_null_true)</span></span><br><span class="line">print(len(age_null_true))</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<pre><code>177
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#缺失值处理</span></span><br><span class="line"><span class="comment">#求年龄平均值</span></span><br><span class="line">good_ages = age[age_is_null==<span class="keyword">False</span>]</span><br><span class="line"><span class="comment">#print(good_ages)</span></span><br><span class="line">mean_age = sum(good_ages)/len(good_ages)</span><br><span class="line">print(mean_age)</span><br><span class="line"></span><br><span class="line"><span class="comment">#另外一种求平均值方法</span></span><br><span class="line">print(good_ages.mean())</span><br></pre></td></tr></table></figure>
+<pre><code>29.69911764705882
+29.69911764705882
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#求不同船舱等级的票价平均值</span></span><br><span class="line">fares_for_class = &#123;&#125;</span><br><span class="line">Pclass = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span> unit <span class="keyword">in</span> Pclass:</span><br><span class="line">    pclass_rows = data[data[<span class="string">'Pclass'</span>] == unit]</span><br><span class="line">    pclass_fares = pclass_rows[<span class="string">'Fare'</span>]</span><br><span class="line">    fare_for_class = pclass_fares.mean()</span><br><span class="line">    fares_for_class[unit] = fare_for_class</span><br><span class="line">    </span><br><span class="line">print(fares_for_class)</span><br></pre></td></tr></table></figure>
+<pre><code>{1: 84.15468749999992, 2: 20.66218315217391, 3: 13.675550101832997}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用pivot_table求不同船舱获救平均比例</span></span><br><span class="line">passager_survival = data.pivot_table(index=<span class="string">"Pclass"</span>,values = <span class="string">"Survived"</span>,aggfunc = np.mean)</span><br><span class="line">print(passager_survival)</span><br></pre></td></tr></table></figure>
+<pre><code>        Survived
+Pclass          
+1       0.629630
+2       0.472826
+3       0.242363
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用pivot_table求不同船舱平均票价</span></span><br><span class="line">mean_fares = data.pivot_table(index = <span class="string">"Pclass"</span>,values = <span class="string">"Fare"</span>,aggfunc = np.mean)</span><br><span class="line">print(mean_fares)</span><br></pre></td></tr></table></figure>
+<pre><code>             Fare
+Pclass           
+1       84.154687
+2       20.662183
+3       13.675550
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用pivot_table求不同等级船舱平均年龄</span></span><br><span class="line">mean_ages = data.pivot_table(index = <span class="string">"Pclass"</span>,values = <span class="string">"Age"</span>,aggfunc = np.mean)</span><br><span class="line">print(mean_ages.sort_values(<span class="string">"Age"</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>              Age
+Pclass           
+3       25.140620
+2       29.877630
+1       38.233441
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用pivot_table求不同登船点与船票和获救人数的关系</span></span><br><span class="line">port_stat = data.pivot_table(index=<span class="string">"Embarked"</span>,values = [<span class="string">"Fare"</span>,<span class="string">"Survived"</span>],aggfunc = np.sum)</span><br><span class="line">print(port_stat)</span><br></pre></td></tr></table></figure>
+<pre><code>                Fare  Survived
+Embarked                      
+C         10072.2962        93
+Q          1022.2543        30
+S         17439.3988       217
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#dropna()</span></span><br><span class="line">dropna_columns = data.dropna(axis=<span class="number">1</span>)</span><br><span class="line">new_data = data.dropna(axis=<span class="number">0</span>,subset=[<span class="string">"Age"</span>,<span class="string">"Sex"</span>])</span><br><span class="line">new_data</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>PassengerId</th><br>      <th>Survived</th><br>      <th>Pclass</th><br>      <th>Name</th><br>      <th>Sex</th><br>      <th>Age</th><br>      <th>SibSp</th><br>      <th>Parch</th><br>      <th>Ticket</th><br>      <th>Fare</th><br>      <th>Cabin</th><br>      <th>Embarked</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Braund, Mr. Owen Harris</td><br>      <td>male</td><br>      <td>22.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>A/5 21171</td><br>      <td>7.2500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>2</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Cumings, Mrs. John Bradley (Florence Briggs Th…</td><br>      <td>female</td><br>      <td>38.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>PC 17599</td><br>      <td>71.2833</td><br>      <td>C85</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>3</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Heikkinen, Miss. Laina</td><br>      <td>female</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>STON/O2. 3101282</td><br>      <td>7.9250</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>4</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td><br>      <td>female</td><br>      <td>35.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>113803</td><br>      <td>53.1000</td><br>      <td>C123</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>5</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Allen, Mr. William Henry</td><br>      <td>male</td><br>      <td>35.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>373450</td><br>      <td>8.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>7</td><br>      <td>0</td><br>      <td>1</td><br>      <td>McCarthy, Mr. Timothy J</td><br>      <td>male</td><br>      <td>54.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>17463</td><br>      <td>51.8625</td><br>      <td>E46</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>8</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Palsson, Master. Gosta Leonard</td><br>      <td>male</td><br>      <td>2.0</td><br>      <td>3</td><br>      <td>1</td><br>      <td>349909</td><br>      <td>21.0750</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>9</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)</td><br>      <td>female</td><br>      <td>27.0</td><br>      <td>0</td><br>      <td>2</td><br>      <td>347742</td><br>      <td>11.1333</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>10</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Nasser, Mrs. Nicholas (Adele Achem)</td><br>      <td>female</td><br>      <td>14.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>237736</td><br>      <td>30.0708</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>11</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Sandstrom, Miss. Marguerite Rut</td><br>      <td>female</td><br>      <td>4.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>PP 9549</td><br>      <td>16.7000</td><br>      <td>G6</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>12</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Bonnell, Miss. Elizabeth</td><br>      <td>female</td><br>      <td>58.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>113783</td><br>      <td>26.5500</td><br>      <td>C103</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>13</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Saundercock, Mr. William Henry</td><br>      <td>male</td><br>      <td>20.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>A/5. 2151</td><br>      <td>8.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>14</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Andersson, Mr. Anders Johan</td><br>      <td>male</td><br>      <td>39.0</td><br>      <td>1</td><br>      <td>5</td><br>      <td>347082</td><br>      <td>31.2750</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>15</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vestrom, Miss. Hulda Amanda Adolfina</td><br>      <td>female</td><br>      <td>14.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>350406</td><br>      <td>7.8542</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>16</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Hewlett, Mrs. (Mary D Kingcome)</td><br>      <td>female</td><br>      <td>55.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>248706</td><br>      <td>16.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>17</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Rice, Master. Eugene</td><br>      <td>male</td><br>      <td>2.0</td><br>      <td>4</td><br>      <td>1</td><br>      <td>382652</td><br>      <td>29.1250</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>19</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vander Planke, Mrs. Julius (Emelia Maria Vande…</td><br>      <td>female</td><br>      <td>31.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>345763</td><br>      <td>18.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>21</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Fynney, Mr. Joseph J</td><br>      <td>male</td><br>      <td>35.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>239865</td><br>      <td>26.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>22</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Beesley, Mr. Lawrence</td><br>      <td>male</td><br>      <td>34.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>248698</td><br>      <td>13.0000</td><br>      <td>D56</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>23</td><br>      <td>1</td><br>      <td>3</td><br>      <td>McGowan, Miss. Anna “Annie”</td><br>      <td>female</td><br>      <td>15.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>330923</td><br>      <td>8.0292</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>24</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Sloper, Mr. William Thompson</td><br>      <td>male</td><br>      <td>28.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>113788</td><br>      <td>35.5000</td><br>      <td>A6</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>25</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Palsson, Miss. Torborg Danira</td><br>      <td>female</td><br>      <td>8.0</td><br>      <td>3</td><br>      <td>1</td><br>      <td>349909</td><br>      <td>21.0750</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>26</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Asplund, Mrs. Carl Oscar (Selma Augusta Emilia…</td><br>      <td>female</td><br>      <td>38.0</td><br>      <td>1</td><br>      <td>5</td><br>      <td>347077</td><br>      <td>31.3875</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>27</th><br>      <td>28</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Fortune, Mr. Charles Alexander</td><br>      <td>male</td><br>      <td>19.0</td><br>      <td>3</td><br>      <td>2</td><br>      <td>19950</td><br>      <td>263.0000</td><br>      <td>C23 C25 C27</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>30</th><br>      <td>31</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Uruchurtu, Don. Manuel E</td><br>      <td>male</td><br>      <td>40.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>PC 17601</td><br>      <td>27.7208</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>33</th><br>      <td>34</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Wheadon, Mr. Edward H</td><br>      <td>male</td><br>      <td>66.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>C.A. 24579</td><br>      <td>10.5000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>34</th><br>      <td>35</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Meyer, Mr. Edgar Joseph</td><br>      <td>male</td><br>      <td>28.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>PC 17604</td><br>      <td>82.1708</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>35</th><br>      <td>36</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Holverson, Mr. Alexander Oskar</td><br>      <td>male</td><br>      <td>42.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>113789</td><br>      <td>52.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>37</th><br>      <td>38</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Cann, Mr. Ernest Charles</td><br>      <td>male</td><br>      <td>21.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>A./5. 2152</td><br>      <td>8.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>38</th><br>      <td>39</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vander Planke, Miss. Augusta Maria</td><br>      <td>female</td><br>      <td>18.0</td><br>      <td>2</td><br>      <td>0</td><br>      <td>345764</td><br>      <td>18.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>…</th><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>      <td>…</td><br>    </tr><br>    <tr><br>      <th>856</th><br>      <td>857</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Wick, Mrs. George Dennick (Mary Hitchcock)</td><br>      <td>female</td><br>      <td>45.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>36928</td><br>      <td>164.8667</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>857</th><br>      <td>858</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Daly, Mr. Peter Denis</td><br>      <td>male</td><br>      <td>51.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>113055</td><br>      <td>26.5500</td><br>      <td>E17</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>858</th><br>      <td>859</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Baclini, Mrs. Solomon (Latifa Qurban)</td><br>      <td>female</td><br>      <td>24.0</td><br>      <td>0</td><br>      <td>3</td><br>      <td>2666</td><br>      <td>19.2583</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>860</th><br>      <td>861</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Hansen, Mr. Claus Peter</td><br>      <td>male</td><br>      <td>41.0</td><br>      <td>2</td><br>      <td>0</td><br>      <td>350026</td><br>      <td>14.1083</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>861</th><br>      <td>862</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Giles, Mr. Frederick Edward</td><br>      <td>male</td><br>      <td>21.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>28134</td><br>      <td>11.5000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>862</th><br>      <td>863</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Swift, Mrs. Frederick Joel (Margaret Welles Ba…</td><br>      <td>female</td><br>      <td>48.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>17466</td><br>      <td>25.9292</td><br>      <td>D17</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>864</th><br>      <td>865</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Gill, Mr. John William</td><br>      <td>male</td><br>      <td>24.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>233866</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>865</th><br>      <td>866</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Bystrom, Mrs. (Karolina)</td><br>      <td>female</td><br>      <td>42.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>236852</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>866</th><br>      <td>867</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Duran y More, Miss. Asuncion</td><br>      <td>female</td><br>      <td>27.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>SC/PARIS 2149</td><br>      <td>13.8583</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>867</th><br>      <td>868</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Roebling, Mr. Washington Augustus II</td><br>      <td>male</td><br>      <td>31.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>PC 17590</td><br>      <td>50.4958</td><br>      <td>A24</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>869</th><br>      <td>870</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Johnson, Master. Harold Theodor</td><br>      <td>male</td><br>      <td>4.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>347742</td><br>      <td>11.1333</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>870</th><br>      <td>871</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Balkic, Mr. Cerin</td><br>      <td>male</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349248</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>871</th><br>      <td>872</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Beckwith, Mrs. Richard Leonard (Sallie Monypeny)</td><br>      <td>female</td><br>      <td>47.0</td><br>      <td>1</td><br>      <td>1</td><br>      <td>11751</td><br>      <td>52.5542</td><br>      <td>D35</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>872</th><br>      <td>873</td><br>      <td>0</td><br>      <td>1</td><br>      <td>Carlsson, Mr. Frans Olof</td><br>      <td>male</td><br>      <td>33.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>695</td><br>      <td>5.0000</td><br>      <td>B51 B53 B55</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>873</th><br>      <td>874</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Vander Cruyssen, Mr. Victor</td><br>      <td>male</td><br>      <td>47.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>345765</td><br>      <td>9.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>874</th><br>      <td>875</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Abelson, Mrs. Samuel (Hannah Wizosky)</td><br>      <td>female</td><br>      <td>28.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>P/PP 3381</td><br>      <td>24.0000</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>875</th><br>      <td>876</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Najib, Miss. Adele Kiamie “Jane”</td><br>      <td>female</td><br>      <td>15.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>2667</td><br>      <td>7.2250</td><br>      <td>NaN</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>876</th><br>      <td>877</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Gustafsson, Mr. Alfred Ossian</td><br>      <td>male</td><br>      <td>20.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>7534</td><br>      <td>9.8458</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>877</th><br>      <td>878</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Petroff, Mr. Nedelio</td><br>      <td>male</td><br>      <td>19.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349212</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>879</th><br>      <td>880</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)</td><br>      <td>female</td><br>      <td>56.0</td><br>      <td>0</td><br>      <td>1</td><br>      <td>11767</td><br>      <td>83.1583</td><br>      <td>C50</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>880</th><br>      <td>881</td><br>      <td>1</td><br>      <td>2</td><br>      <td>Shelley, Mrs. William (Imanita Parrish Hall)</td><br>      <td>female</td><br>      <td>25.0</td><br>      <td>0</td><br>      <td>1</td><br>      <td>230433</td><br>      <td>26.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>881</th><br>      <td>882</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Markun, Mr. Johann</td><br>      <td>male</td><br>      <td>33.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>349257</td><br>      <td>7.8958</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>882</th><br>      <td>883</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Dahlberg, Miss. Gerda Ulrika</td><br>      <td>female</td><br>      <td>22.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>7552</td><br>      <td>10.5167</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>883</th><br>      <td>884</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Banfield, Mr. Frederick James</td><br>      <td>male</td><br>      <td>28.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>C.A./SOTON 34068</td><br>      <td>10.5000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>884</th><br>      <td>885</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Sutehall, Mr. Henry Jr</td><br>      <td>male</td><br>      <td>25.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>SOTON/OQ 392076</td><br>      <td>7.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>885</th><br>      <td>886</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Rice, Mrs. William (Margaret Norton)</td><br>      <td>female</td><br>      <td>39.0</td><br>      <td>0</td><br>      <td>5</td><br>      <td>382652</td><br>      <td>29.1250</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>    <tr><br>      <th>886</th><br>      <td>887</td><br>      <td>0</td><br>      <td>2</td><br>      <td>Montvila, Rev. Juozas</td><br>      <td>male</td><br>      <td>27.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>211536</td><br>      <td>13.0000</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>887</th><br>      <td>888</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Graham, Miss. Margaret Edith</td><br>      <td>female</td><br>      <td>19.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>112053</td><br>      <td>30.0000</td><br>      <td>B42</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>889</th><br>      <td>890</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Behr, Mr. Karl Howell</td><br>      <td>male</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>111369</td><br>      <td>30.0000</td><br>      <td>C148</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>890</th><br>      <td>891</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Dooley, Mr. Patrick</td><br>      <td>male</td><br>      <td>32.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>370376</td><br>      <td>7.7500</td><br>      <td>NaN</td><br>      <td>Q</td><br>    </tr><br>  </tbody><br></table><br><p>714 rows × 12 columns</p><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#通过行和列定位</span></span><br><span class="line">data.loc[<span class="number">83</span>,<span class="string">"Name"</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;Carrau, Mr. Francisco M&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sort_values排序</span></span><br><span class="line">new_data = data.sort_values(<span class="string">'Age'</span>,ascending=<span class="keyword">False</span>)</span><br><span class="line">print(new_data[<span class="number">0</span>:<span class="number">10</span>])</span><br><span class="line">print(<span class="string">"------"</span>)</span><br><span class="line"><span class="comment">#对序号重新生成</span></span><br><span class="line">new_reindexed = new_data.reset_index(drop=<span class="keyword">True</span>)</span><br><span class="line">print(new_reindexed[<span class="number">0</span>:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>     PassengerId  Survived  Pclass                                  Name  \
+630          631         1       1  Barkworth, Mr. Algernon Henry Wilson   
+851          852         0       3                   Svensson, Mr. Johan   
+493          494         0       1               Artagaveytia, Mr. Ramon   
+96            97         0       1             Goldschmidt, Mr. George B   
+116          117         0       3                  Connors, Mr. Patrick   
+672          673         0       2           Mitchell, Mr. Henry Michael   
+745          746         0       1          Crosby, Capt. Edward Gifford   
+33            34         0       2                 Wheadon, Mr. Edward H   
+54            55         0       1        Ostby, Mr. Engelhart Cornelius   
+280          281         0       3                      Duane, Mr. Frank   
+
+      Sex   Age  SibSp  Parch      Ticket     Fare Cabin Embarked  
+630  male  80.0      0      0       27042  30.0000   A23        S  
+851  male  74.0      0      0      347060   7.7750   NaN        S  
+493  male  71.0      0      0    PC 17609  49.5042   NaN        C  
+96   male  71.0      0      0    PC 17754  34.6542    A5        C  
+116  male  70.5      0      0      370369   7.7500   NaN        Q  
+672  male  70.0      0      0  C.A. 24580  10.5000   NaN        S  
+745  male  70.0      1      1   WE/P 5735  71.0000   B22        S  
+33   male  66.0      0      0  C.A. 24579  10.5000   NaN        S  
+54   male  65.0      0      1      113509  61.9792   B30        C  
+280  male  65.0      0      0      336439   7.7500   NaN        Q  
+------
+   PassengerId  Survived  Pclass                                  Name   Sex  \
+0          631         1       1  Barkworth, Mr. Algernon Henry Wilson  male   
+1          852         0       3                   Svensson, Mr. Johan  male   
+2          494         0       1               Artagaveytia, Mr. Ramon  male   
+3           97         0       1             Goldschmidt, Mr. George B  male   
+4          117         0       3                  Connors, Mr. Patrick  male   
+5          673         0       2           Mitchell, Mr. Henry Michael  male   
+6          746         0       1          Crosby, Capt. Edward Gifford  male   
+7           34         0       2                 Wheadon, Mr. Edward H  male   
+8           55         0       1        Ostby, Mr. Engelhart Cornelius  male   
+9          281         0       3                      Duane, Mr. Frank  male   
+
+    Age  SibSp  Parch      Ticket     Fare Cabin Embarked  
+0  80.0      0      0       27042  30.0000   A23        S  
+1  74.0      0      0      347060   7.7750   NaN        S  
+2  71.0      0      0    PC 17609  49.5042   NaN        C  
+3  71.0      0      0    PC 17754  34.6542    A5        C  
+4  70.5      0      0      370369   7.7500   NaN        Q  
+5  70.0      0      0  C.A. 24580  10.5000   NaN        S  
+6  70.0      1      1   WE/P 5735  71.0000   B22        S  
+7  66.0      0      0  C.A. 24579  10.5000   NaN        S  
+8  65.0      0      1      113509  61.9792   B30        C  
+9  65.0      0      0      336439   7.7500   NaN        Q  
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 结合apply()使用自定义函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hundredth_row</span><span class="params">(column)</span>:</span></span><br><span class="line">    hundredth_item = column.loc[<span class="number">99</span>]</span><br><span class="line">    <span class="keyword">return</span> hundredth_item</span><br><span class="line"></span><br><span class="line">hundredth_row = data.apply(hundredth_row)</span><br><span class="line">print(hundredth_row)</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId                  100
+Survived                       0
+Pclass                         2
+Name           Kantor, Mr. Sinai
+Sex                         male
+Age                           34
+SibSp                          1
+Parch                          0
+Ticket                    244367
+Fare                          26
+Cabin                        NaN
+Embarked                       S
+dtype: object
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_null_count</span><span class="params">(column)</span>:</span></span><br><span class="line">    column_null = pd.isnull(column)</span><br><span class="line">    null = column[column_null]</span><br><span class="line">    <span class="keyword">return</span> len(null)</span><br><span class="line">not_null_counts = data.apply(not_null_count)</span><br><span class="line">print(not_null_counts)</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId      0
+Survived         0
+Pclass           0
+Name             0
+Sex              0
+Age            177
+SibSp            0
+Parch            0
+Ticket           0
+Fare             0
+Cabin          687
+Embarked         2
+dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">which_class</span><span class="params">(row)</span>:</span></span><br><span class="line">    pclass = row[<span class="string">'Pclass'</span>]</span><br><span class="line">    <span class="keyword">if</span> pd.isnull(pclass):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Unknow"</span></span><br><span class="line">    <span class="keyword">if</span> pclass == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"一等舱"</span></span><br><span class="line">    <span class="keyword">if</span> pclass == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"二等舱"</span></span><br><span class="line">    <span class="keyword">if</span> pclass == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"三等舱"</span></span><br><span class="line">    </span><br><span class="line">pclass = data.apply(which_class,axis=<span class="number">1</span>)</span><br><span class="line">print(pclass)</span><br></pre></td></tr></table></figure>
+<pre><code>0      三等舱
+1      一等舱
+2      三等舱
+3      一等舱
+4      三等舱
+5      三等舱
+6      一等舱
+7      三等舱
+8      三等舱
+9      二等舱
+10     三等舱
+11     一等舱
+12     三等舱
+13     三等舱
+14     三等舱
+15     二等舱
+16     三等舱
+17     二等舱
+18     三等舱
+19     三等舱
+20     二等舱
+21     二等舱
+22     三等舱
+23     一等舱
+24     三等舱
+25     三等舱
+26     三等舱
+27     一等舱
+28     三等舱
+29     三等舱
+      ... 
+861    二等舱
+862    一等舱
+863    三等舱
+864    二等舱
+865    二等舱
+866    二等舱
+867    一等舱
+868    三等舱
+869    三等舱
+870    三等舱
+871    一等舱
+872    一等舱
+873    三等舱
+874    二等舱
+875    三等舱
+876    三等舱
+877    三等舱
+878    三等舱
+879    一等舱
+880    二等舱
+881    三等舱
+882    三等舱
+883    二等舱
+884    三等舱
+885    三等舱
+886    二等舱
+887    一等舱
+888    三等舱
+889    一等舱
+890    三等舱
+Length: 891, dtype: object
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_age_lable</span><span class="params">(row)</span>:</span></span><br><span class="line">    age = row[<span class="string">'Age'</span>]</span><br><span class="line">    <span class="keyword">if</span> pd.isnull(age):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Unknown"</span></span><br><span class="line">    <span class="keyword">elif</span> age &lt;<span class="number">18</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"未成年人"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"成年人"</span></span><br><span class="line">    </span><br><span class="line">age_lable = data.apply(generate_age_lable,axis = <span class="number">1</span>)</span><br><span class="line">print(age_lable)</span><br><span class="line">data[<span class="string">'age_lable'</span>] = age_lable</span><br><span class="line">age_group_survival = data.pivot_table(index=<span class="string">"age_lable"</span>, values = <span class="string">"Survived"</span>,aggfunc=np.mean)</span><br><span class="line">print(age_group_survival)</span><br></pre></td></tr></table></figure>
+<pre><code>0          成年人
+1          成年人
+2          成年人
+3          成年人
+4          成年人
+5      Unknown
+6          成年人
+7         未成年人
+8          成年人
+9         未成年人
+10        未成年人
+11         成年人
+12         成年人
+13         成年人
+14        未成年人
+15         成年人
+16        未成年人
+17     Unknown
+18         成年人
+19     Unknown
+20         成年人
+21         成年人
+22        未成年人
+23         成年人
+24        未成年人
+25         成年人
+26     Unknown
+27         成年人
+28     Unknown
+29     Unknown
+        ...   
+861        成年人
+862        成年人
+863    Unknown
+864        成年人
+865        成年人
+866        成年人
+867        成年人
+868    Unknown
+869       未成年人
+870        成年人
+871        成年人
+872        成年人
+873        成年人
+874        成年人
+875       未成年人
+876        成年人
+877        成年人
+878    Unknown
+879        成年人
+880        成年人
+881        成年人
+882        成年人
+883        成年人
+884        成年人
+885        成年人
+886        成年人
+887        成年人
+888    Unknown
+889        成年人
+890        成年人
+Length: 891, dtype: object
+           Survived
+age_lable          
+Unknown    0.293785
+成年人        0.381032
+未成年人       0.539823
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 性别与获救比例的关系</span></span><br><span class="line">sex_survival = data.pivot_table(index = <span class="string">"Sex"</span>,values=<span class="string">"Survived"</span>,aggfunc = np.mean)</span><br><span class="line">print(sex_survival)</span><br></pre></td></tr></table></figure>
+<pre><code>        Survived
+Sex             
+female  0.742038
+male    0.188908
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/07/“python数据分析与机器学习实战-07-Pandas数据预处理”/" rel="next" title="“python数据分析与机器学习实战-07.Pandas数据预处理”">
+                <i class="fa fa-chevron-left"></i> “python数据分析与机器学习实战-07.Pandas数据预处理”
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/07/“python数据分析与机器学习实战-09-折线图绘制”/" rel="prev" title="“python数据分析与机器学习实战-09.折线图绘制”">
+                “python数据分析与机器学习实战-09.折线图绘制” <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Carlos" />
+            
+              <p class="site-author-name" itemprop="name">Carlos</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/carloszo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:carlos@cishao.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/karl.zuo" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/江华-左-69a37bb1/" target="_blank" title="Linkedin">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Linkedin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carlos</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
