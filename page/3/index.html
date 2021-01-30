@@ -164,6 +164,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16.%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="千里之行，始于足下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猎头Carlos的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16.%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-16.多变量分析绘图</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+08:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-29 11:09:32" itemprop="dateModified" datetime="2021-01-29T11:09:32+08:00">2021-01-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib as mpl</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">sns.set(style &#x3D; &quot;whitegrid&quot;,color_codes&#x3D;True)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tips &#x3D; sns.load_dataset(&quot;tips&quot;)</span><br><span class="line">iris &#x3D; sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">titanic &#x3D; sns.load_dataset(&quot;titanic&quot;)</span><br><span class="line">sns.stripplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x10de58518&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_1.png" alt="png"></a></p>
+<p>重叠很正常，但是影响观察数据量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.stripplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips,jitter&#x3D;True)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x108208b00&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.swarmplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1ac1a7b8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_4_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_4_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.swarmplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;sex&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1ac68d30&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_5_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_5_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x&#x3D;&quot;total_bill&quot;,y&#x3D;&quot;day&quot;,hue&#x3D;&quot;time&quot;,data&#x3D;tips)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1ad26390&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x&#x3D;&quot;total_bill&quot;,y&#x3D;&quot;day&quot;,hue&#x3D;&quot;sex&quot;,data&#x3D;tips,split&#x3D;True)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1af157b8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.violinplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips,inner&#x3D;None)</span><br><span class="line">sns.swarmplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,data&#x3D;tips,color&#x3D;&#39;w&#39;,alpha&#x3D;0.5)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1b4a4f60&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">titanic</span><br><span class="line">sns.barplot(x&#x3D;&quot;sex&quot;,y&#x3D;&quot;survived&quot;,data&#x3D;titanic,hue&#x3D;&quot;class&quot;)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1b7ba0b8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_9_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_9_1.png" alt="png"></a></p>
+<p>点图可以很好的描绘数据的差异</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.pointplot(x&#x3D;&quot;sex&quot;,y&#x3D;&quot;survived&quot;,hue &#x3D; &quot;class&quot;,data&#x3D;titanic)</span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1b9f2860&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_11_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_11_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#多层面板分类图</span><br><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1b884d30&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_12_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_12_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips,kind&#x3D;&quot;bar&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1bb5b710&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_13_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_13_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips,kind&#x3D;&quot;swarm&quot;,col&#x3D;&quot;time&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1be4dac8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_14_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_14_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.factorplot(x&#x3D;&quot;day&quot;,y&#x3D;&quot;total_bill&quot;,hue&#x3D;&quot;smoker&quot;,data&#x3D;tips,kind&#x3D;&quot;box&quot;,col&#x3D;&quot;day&quot;,size&#x3D;4,aspect&#x3D;0.5)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1c0a5588&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_15_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16-%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_15_1.png" alt="png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18.%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2779,20 +2884,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
