@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="12345import pandas as pdimport numpy as npimport matplotlib as mptimport matplotlib.pyplot as pltimport seaborn as sns   12tips&#x3D;sns.load_dataset(&quot;tips&quot;)tips.head()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python数据分析与机器学习实战-17.FacetGrid使用方法及绘制多变量">
+<meta property="og:url" content="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17.FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="Carlos的博客">
+<meta property="og:description" content="12345import pandas as pdimport numpy as npimport matplotlib as mptimport matplotlib.pyplot as pltimport seaborn as sns   12tips&#x3D;sns.load_dataset(&quot;tips&quot;)tips.head()">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_2_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_3_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_4_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_5_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_6_2.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_7_3.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_8_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_9_0.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_10_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_11_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_12_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_13_1.png">
+<meta property="og:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_14_1.png">
+<meta property="article:published_time" content="2018-12-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-14T01:51:15.368Z">
+<meta property="article:author" content="Carlos">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_2_1.png">
+
+<link rel="canonical" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17.FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>python数据分析与机器学习实战-17.FacetGrid使用方法及绘制多变量 | Carlos的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Carlos的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Carlos的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17.FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="千里之行，始于足下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carlos的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python数据分析与机器学习实战-17.FacetGrid使用方法及绘制多变量
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-14 01:51:15" itemprop="dateModified" datetime="2023-08-14T01:51:15+00:00">2023-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib as mpt</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tips&#x3D;sns.load_dataset(&quot;tips&quot;)</span><br><span class="line">tips.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">total_bill</th>
+<th align="left">tip</th>
+<th align="left">sex</th>
+<th align="left">smoker</th>
+<th align="left">day</th>
+<th align="left">time</th>
+<th align="left">size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">16.99</td>
+<td align="left">1.01</td>
+<td align="left">Female</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">10.34</td>
+<td align="left">1.66</td>
+<td align="left">Male</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">21.01</td>
+<td align="left">3.50</td>
+<td align="left">Male</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">23.68</td>
+<td align="left">3.31</td>
+<td align="left">Male</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">24.59</td>
+<td align="left">3.61</td>
+<td align="left">Female</td>
+<td align="left">No</td>
+<td align="left">Sun</td>
+<td align="left">Dinner</td>
+<td align="left">4</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;sns.FacetGrid(tips,col&#x3D;&quot;time&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1155f0f0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_2_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_2_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;sns.FacetGrid(tips,col&#x3D;&quot;time&quot;)</span><br><span class="line">g.map(plt.hist,&quot;total_bill&quot;)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1d6a5748&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_3_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_3_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.FacetGrid(tips,col&#x3D;&quot;sex&quot;,hue&#x3D;&quot;smoker&quot;)</span><br><span class="line">g.map(plt.scatter,&quot;total_bill&quot;,&quot;tip&quot;,alpha&#x3D;0.7)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1e19c0f0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_4_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_4_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.FacetGrid(tips,col&#x3D;&quot;time&quot;,row&#x3D;&quot;smoker&quot;,margin_titles&#x3D;True)</span><br><span class="line">g.map(sns.regplot,&quot;size&quot;,&quot;total_bill&quot;,color&#x3D;&quot;0.3&quot;,fit_reg&#x3D;False,x_jitter&#x3D;0.1)</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1eb23d68&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_5_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_5_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.FacetGrid(tips,col&#x3D;&quot;day&quot;,size&#x3D;4,aspect&#x3D;0.5)</span><br><span class="line">g.map(sns.barplot,&quot;sex&quot;,&quot;total_bill&quot;)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;seaborn&#x2F;axisgrid.py:703: UserWarning: Using the barplot function without specifying &#96;order&#96; is likely to produce an incorrect plot.</span><br><span class="line">  warnings.warn(warning)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a21180d30&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_6_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_6_2.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from pandas import Categorical</span><br><span class="line">order_days &#x3D; tips.day.value_counts().index</span><br><span class="line">print(order_days)</span><br><span class="line">order_days &#x3D; Categorical([&quot;Thur&quot;,&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;])</span><br><span class="line">g &#x3D; sns.FacetGrid(tips,row&#x3D;&quot;day&quot;,row_order&#x3D;order_days,size&#x3D;1.7,aspect&#x3D;4)</span><br><span class="line">g.map(sns.boxplot,&quot;total_bill&quot;)</span><br><span class="line">CategoricalIndex([&#39;Sat&#39;, &#39;Sun&#39;, &#39;Thur&#39;, &#39;Fri&#39;], categories&#x3D;[&#39;Thur&#39;, &#39;Fri&#39;, &#39;Sat&#39;, &#39;Sun&#39;], ordered&#x3D;False, dtype&#x3D;&#39;category&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;seaborn&#x2F;axisgrid.py:703: UserWarning: Using the boxplot function without specifying &#96;order&#96; is likely to produce an incorrect plot.</span><br><span class="line">  warnings.warn(warning)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a1e4168d0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_7_3.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_7_3.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pal &#x3D; dict(Lunch&#x3D;&quot;seagreen&quot;,Dinner&#x3D;&quot;blue&quot;)</span><br><span class="line">g &#x3D; sns.FacetGrid(tips,hue&#x3D;&quot;time&quot;,palette&#x3D;pal,size&#x3D;5)</span><br><span class="line">g.map(plt.scatter,&quot;total_bill&quot;,&quot;tip&quot;,s&#x3D;50,alpha&#x3D;0.7,linewidth&#x3D;0.5,edgecolor&#x3D;&quot;white&quot;)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.FacetGrid at 0x1a2201f8d0&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_8_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_8_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">with sns.axes_style(&quot;white&quot;):</span><br><span class="line">    g&#x3D;sns.FacetGrid(tips,row&#x3D;&quot;sex&quot;,col&#x3D;&quot;smoker&quot;,margin_titles&#x3D;True,size&#x3D;2.5)</span><br><span class="line">g.map(plt.scatter,&quot;total_bill&quot;,&quot;tip&quot;,color&#x3D;&quot;#334488&quot;,edgecolor&#x3D;&quot;white&quot;,lw&#x3D;0.5)</span><br><span class="line">g.set_axis_labels(&quot;total_bill(Us dollar)&quot;,&quot;tips&quot;)</span><br><span class="line">g.set(xticks&#x3D;[10,30,50],yticks&#x3D;[2,6,10])</span><br><span class="line">g.fig.subplots_adjust(wspace&#x3D;0.02,hspace&#x3D;0.02)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_9_0.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_9_0.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iris &#x3D; sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">g &#x3D; sns.PairGrid(iris)</span><br><span class="line">g.map(plt.scatter)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a21f379e8&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_10_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_10_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(iris)</span><br><span class="line">g.map_diag(plt.hist)</span><br><span class="line">g.map_offdiag(plt.scatter)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a21a84b00&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_11_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_11_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(iris,hue&#x3D;&quot;species&quot;)</span><br><span class="line">g.map_diag(plt.hist)</span><br><span class="line">g.map_offdiag(plt.scatter)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a23793860&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_12_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_12_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(iris,hue&#x3D;&quot;species&quot;,vars&#x3D;[&quot;sepal_length&quot;,&quot;sepal_width&quot;])</span><br><span class="line">g.map(plt.scatter)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a24382550&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_13_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_13_1.png" alt="png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; sns.PairGrid(tips,hue&#x3D;&quot;size&quot;,palette&#x3D;&quot;GnBu_d&quot;)</span><br><span class="line">g.map(plt.scatter,s&#x3D;50,edgecolor&#x3D;&quot;white&quot;)</span><br><span class="line">g.add_legend()</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a26982c88&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_14_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-17-FacetGrid%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E5%8F%8A%E7%BB%98%E5%88%B6%E5%A4%9A%E5%8F%98%E9%87%8F%E2%80%9D/output_14_1.png" alt="png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-18.%E7%83%AD%E5%8A%9B%E5%9B%BE%E7%BB%98%E5%88%B6/" rel="prev" title="python数据分析与机器学习实战-18.热力图绘制">
+      <i class="fa fa-chevron-left"></i> python数据分析与机器学习实战-18.热力图绘制
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-16.%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/" rel="next" title="python数据分析与机器学习实战-16.多变量分析绘图">
+      python数据分析与机器学习实战-16.多变量分析绘图 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Carlos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Carlos</p>
+  <div class="site-description" itemprop="description">千里之行，始于足下。</div>
+</div>
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+ 
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/carloszo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;carloszo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:carlos@cishao.cn" title="E-Mail → mailto:carlos@cishao.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/%E6%B1%9F%E5%8D%8E-%E5%B7%A6-69a37bb1/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%E6%B1%9F%E5%8D%8E-%E5%B7%A6-69a37bb1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carlos</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

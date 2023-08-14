@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="var NexT &#x3D; window.NexT || {};   var CONFIG &#x3D; {     root: &#39;&#x2F;&#39;,     scheme:">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Carlos的博客">
+<meta property="og:url" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/index.html">
+<meta property="og:site_name" content="Carlos的博客">
+<meta property="og:description" content="var NexT &#x3D; window.NexT || {};   var CONFIG &#x3D; {     root: &#39;&#x2F;&#39;,     scheme:">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_2.png">
+<meta property="og:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_2_2.png">
+<meta property="og:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_2.png">
+<meta property="og:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_2.png">
+<meta property="og:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png">
+<meta property="og:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png">
+<meta property="og:image" content="http://example.com/images/avatar.jpeg">
+<meta property="article:published_time" content="2023-08-14T01:51:15.360Z">
+<meta property="article:modified_time" content="2023-08-14T01:51:15.360Z">
+<meta property="article:author" content="Carlos">
+<meta property="article:tag" content="Hexo,next">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_2.png">
+
+<link rel="canonical" href="http://example.com/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title> | Carlos的博客
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Carlos的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Carlos的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-Hans">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/2018/">2018</a></li>
+            <li><a href="/2018/12/">12</a></li>
+            <li><a href="/2018/12/07/">07</a></li>
+          <li>“PYTHON数据分析与机器学习实战-14-单变量分析绘图”</li>
+        
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="seaborn," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="123456import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport seaborn as snsfrom scipy import stats,integrate%matplotlib inline">
+<meta name="keywords" content="seaborn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“python数据分析与机器学习实战-14.单变量分析绘图”">
+<meta property="og:url" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/index.html">
+<meta property="og:site_name" content="Carlos">
+<meta property="og:description" content="123456import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport seaborn as snsfrom scipy import stats,integrate%matplotlib inline">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_1_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_2_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_3_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_6_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_7_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_8_1.png">
+<meta property="og:updated_time" content="2018-12-07T08:15:57.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“python数据分析与机器学习实战-14.单变量分析绘图”">
+<meta name="twitter:description" content="123456import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport seaborn as snsfrom scipy import stats,integrate%matplotlib inline">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/output_1_2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/"/>
+
+
+
+
+
+  <title>“python数据分析与机器学习实战-14.单变量分析绘图” | Carlos</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Carlos</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/“python数据分析与机器学习实战-14-单变量分析绘图”/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carlos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“python数据分析与机器学习实战-14.单变量分析绘图”</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-07T16:14:02+08:00">
+                2018-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据分析/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats,integrate</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set(color_codes = <span class="keyword">True</span>)</span><br><span class="line">x = np.random.normal(size=<span class="number">100</span>)</span><br><span class="line">sns.distplot(x,kde=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+
+
+
+
+
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1510af28&gt;
+</code></pre><p><img src="output_1_2.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.distplot(x,bins=<span class="number">20</span>,kde=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+
+
+
+
+
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1505f860&gt;
+</code></pre><p><img src="output_2_2.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.gamma(<span class="number">6</span>,size=<span class="number">200</span>)</span><br><span class="line">sns.distplot(x,kde=<span class="keyword">False</span>,fit=stats.gamma)</span><br></pre></td></tr></table></figure>
+<pre><code>/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+
+
+
+
+
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a153a0240&gt;
+</code></pre><p><img src="output_3_2.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mean,cov = [<span class="number">0</span>,<span class="number">1</span>],[(<span class="number">1</span>,<span class="number">.5</span>),(<span class="number">.5</span>,<span class="number">1</span>)]</span><br><span class="line">data = np.random.multivariate_normal(mean,cov,<span class="number">200</span>)</span><br><span class="line">df = pd.DataFrame(data,columns=[<span class="string">"x"</span>,<span class="string">"y"</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>x</th><br>      <th>y</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>-0.174087</td><br>      <td>1.795256</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>-0.416757</td><br>      <td>0.638361</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>-1.188138</td><br>      <td>-0.331589</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>-0.609992</td><br>      <td>0.435072</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>-1.839588</td><br>      <td>1.710629</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>-0.636881</td><br>      <td>0.890326</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>-0.833977</td><br>      <td>0.792370</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>1.789158</td><br>      <td>2.060371</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>1.156777</td><br>      <td>0.663219</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>0.423476</td><br>      <td>0.673290</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>-0.412169</td><br>      <td>0.751990</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>-1.126475</td><br>      <td>0.535133</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>1.323243</td><br>      <td>1.533676</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>-0.023044</td><br>      <td>-0.599542</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>0.691180</td><br>      <td>0.879479</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>1.478605</td><br>      <td>2.477569</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>-1.637043</td><br>      <td>-0.499630</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>-0.094884</td><br>      <td>2.142044</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>-0.989239</td><br>      <td>1.218270</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>1.420987</td><br>      <td>1.013807</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>0.360396</td><br>      <td>2.465208</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>1.358501</td><br>      <td>1.184887</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>2.339145</td><br>      <td>1.285469</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>1.282484</td><br>      <td>2.062299</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>0.854708</td><br>      <td>0.706735</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>-0.223393</td><br>      <td>-0.172632</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>-0.513652</td><br>      <td>0.535946</td><br>    </tr><br>    <tr><br>      <th>27</th><br>      <td>1.207449</td><br>      <td>1.181039</td><br>    </tr><br>    <tr><br>      <th>28</th><br>      <td>-1.219564</td><br>      <td>-1.178302</td><br>    </tr><br>    <tr><br>      <th>29</th><br>      <td>-0.855500</td><br>      <td>0.167194</td><br>    </tr><br>    <tr><br>      <th>…</th><br>      <td>…</td><br>      <td>…</td><br>    </tr><br>    <tr><br>      <th>170</th><br>      <td>1.022425</td><br>      <td>1.816807</td><br>    </tr><br>    <tr><br>      <th>171</th><br>      <td>0.344980</td><br>      <td>0.766577</td><br>    </tr><br>    <tr><br>      <th>172</th><br>      <td>1.043292</td><br>      <td>0.955718</td><br>    </tr><br>    <tr><br>      <th>173</th><br>      <td>0.765037</td><br>      <td>2.321773</td><br>    </tr><br>    <tr><br>      <th>174</th><br>      <td>0.683540</td><br>      <td>0.501221</td><br>    </tr><br>    <tr><br>      <th>175</th><br>      <td>1.188854</td><br>      <td>0.022803</td><br>    </tr><br>    <tr><br>      <th>176</th><br>      <td>-0.287907</td><br>      <td>-0.166137</td><br>    </tr><br>    <tr><br>      <th>177</th><br>      <td>-0.778977</td><br>      <td>0.036364</td><br>    </tr><br>    <tr><br>      <th>178</th><br>      <td>-1.875389</td><br>      <td>0.689938</td><br>    </tr><br>    <tr><br>      <th>179</th><br>      <td>0.183550</td><br>      <td>1.683339</td><br>    </tr><br>    <tr><br>      <th>180</th><br>      <td>0.220839</td><br>      <td>1.396213</td><br>    </tr><br>    <tr><br>      <th>181</th><br>      <td>0.660952</td><br>      <td>1.921363</td><br>    </tr><br>    <tr><br>      <th>182</th><br>      <td>-2.357542</td><br>      <td>1.145418</td><br>    </tr><br>    <tr><br>      <th>183</th><br>      <td>0.521454</td><br>      <td>0.304456</td><br>    </tr><br>    <tr><br>      <th>184</th><br>      <td>-0.321098</td><br>      <td>-1.072025</td><br>    </tr><br>    <tr><br>      <th>185</th><br>      <td>-0.265391</td><br>      <td>1.166742</td><br>    </tr><br>    <tr><br>      <th>186</th><br>      <td>1.182235</td><br>      <td>2.652254</td><br>    </tr><br>    <tr><br>      <th>187</th><br>      <td>0.920143</td><br>      <td>1.772478</td><br>    </tr><br>    <tr><br>      <th>188</th><br>      <td>0.620841</td><br>      <td>1.806727</td><br>    </tr><br>    <tr><br>      <th>189</th><br>      <td>-0.892951</td><br>      <td>0.177710</td><br>    </tr><br>    <tr><br>      <th>190</th><br>      <td>-0.463518</td><br>      <td>2.034266</td><br>    </tr><br>    <tr><br>      <th>191</th><br>      <td>-0.031959</td><br>      <td>0.967620</td><br>    </tr><br>    <tr><br>      <th>192</th><br>      <td>-0.412957</td><br>      <td>0.324511</td><br>    </tr><br>    <tr><br>      <th>193</th><br>      <td>-0.021698</td><br>      <td>0.949692</td><br>    </tr><br>    <tr><br>      <th>194</th><br>      <td>1.897446</td><br>      <td>2.806375</td><br>    </tr><br>    <tr><br>      <th>195</th><br>      <td>-0.346429</td><br>      <td>0.899780</td><br>    </tr><br>    <tr><br>      <th>196</th><br>      <td>-0.320803</td><br>      <td>-0.144683</td><br>    </tr><br>    <tr><br>      <th>197</th><br>      <td>-0.332870</td><br>      <td>0.751261</td><br>    </tr><br>    <tr><br>      <th>198</th><br>      <td>-0.579072</td><br>      <td>0.318083</td><br>    </tr><br>    <tr><br>      <th>199</th><br>      <td>-0.889261</td><br>      <td>0.091241</td><br>    </tr><br>  </tbody><br></table><br><p>200 rows × 2 columns</p><br></div>
+
+
+
+<p> 观察两个变量之间的分布关系最好用散点图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(x=<span class="string">"x"</span>,y=<span class="string">"y"</span>,data=df)</span><br></pre></td></tr></table></figure>
+<pre><code>/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+
+
+
+
+
+&lt;seaborn.axisgrid.JointGrid at 0x1a22fb1cf8&gt;
+</code></pre><p><img src="output_6_2.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x,y = np.random.multivariate_normal(mean,cov,<span class="number">1000</span>).T</span><br><span class="line"><span class="keyword">with</span> sns.axes_style(<span class="string">"white"</span>):</span><br><span class="line">    sns.jointplot(x=x,y=y,data=df,kind=<span class="string">"hex"</span>,color=<span class="string">'k'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The &apos;normed&apos; kwarg is deprecated, and has been replaced by the &apos;density&apos; kwarg.
+  warnings.warn(&quot;The &apos;normed&apos; kwarg is deprecated, and has been &quot;
+</code></pre><p><img src="output_7_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iris = sns.load_dataset(<span class="string">"iris"</span>)</span><br><span class="line">sns.pairplot(iris)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;seaborn.axisgrid.PairGrid at 0x1a23d144e0&gt;
+</code></pre><p><img src="output_8_1.png" alt="png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/seaborn/" rel="tag"># seaborn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/07/“python数据分析与机器学习实战-13-调色板及颜色设置”/" rel="next" title="“python数据分析与机器学习实战-13.调色板及颜色设置”">
+                <i class="fa fa-chevron-left"></i> “python数据分析与机器学习实战-13.调色板及颜色设置”
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/07/“python数据分析与机器学习实战-15-回归分析绘图”/" rel="prev" title="“python数据分析与机器学习实战-15.回归分析绘图”">
+                “python数据分析与机器学习实战-15.回归分析绘图” <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Carlos" />
+            
+              <p class="site-author-name" itemprop="name">Carlos</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/carloszo" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:carlos@cishao.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/karl.zuo" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/江华-左-69a37bb1/" target="_blank" title="Linkedin">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Linkedin</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carlos</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/2018/">2018</a></li>
+            <li><a href="/2018/12/">12</a></li>
+            <li><a href="/2018/12/07/">07</a></li>
+          <li>“PYTHON数据分析与机器学习实战-14-单变量分析绘图”</li>
+        
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#posts"><span class="nav-number">1.</span> <span class="nav-text">“python数据分析与机器学习实战-14.单变量分析绘图”</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Carlos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Carlos</p>
+  <div class="site-description" itemprop="description">千里之行，始于足下。</div>
+</div>
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+ 
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/carloszo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;carloszo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:carlos@cishao.cn" title="E-Mail → mailto:carlos@cishao.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/%E6%B1%9F%E5%8D%8E-%E5%B7%A6-69a37bb1/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%E6%B1%9F%E5%8D%8E-%E5%B7%A6-69a37bb1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carlos</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
