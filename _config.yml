@@ -151,13 +151,16 @@ feed:
   content_limit_delim: ' '
   order_by: -date
 
-#备份源码123
+#备份源码
 backup:
     type: git
-    theme: next
-    message: "备份博客"
     repository:
-       github: git@github.com/carloszo/carloszo.github.io.git,source
+       github: git@github.com/carloszo/carloszo.github.io.git,backup
+       
+# backup:
+#     type: git
+#     repository:
+#       github: git@github.com:ivanzoo/ivanzoo.github.io.git,blogsource
       
 deploy:
     type: git
