@@ -164,6 +164,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-04.Numpy%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="千里之行，始于足下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carlos的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-04.Numpy%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-04.Numpy常用函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-14 01:51:15" itemprop="dateModified" datetime="2023-08-14T01:51:15+00:00">2023-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.arange(4)</span><br><span class="line">print(a)</span><br><span class="line">#exp():返回e的n次方，e是一个常数为2.71828</span><br><span class="line">print(np.exp(a))</span><br><span class="line">#sqrt():开方</span><br><span class="line">print(np.sqrt(a))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">[0 1 2 3]</span><br><span class="line">[ 1.          2.71828183  7.3890561  20.08553692]</span><br><span class="line">[0.         1.         1.41421356 1.73205081]</span><br><span class="line">#floor()：向下取整，例如3.5 取整后为3</span><br><span class="line">b &#x3D; np.floor(10*np.random.random((3,4)))</span><br><span class="line">print(b)</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#将矩阵拉为向量</span><br><span class="line">print(b.ravel())</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#调整结构</span><br><span class="line">b.shape &#x3D; (6,2)</span><br><span class="line">print(b)</span><br><span class="line">#行和列转换</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">print(b.T)</span><br><span class="line">[[7. 1. 5. 6.]</span><br><span class="line"> [7. 1. 2. 4.]</span><br><span class="line"> [1. 5. 7. 4.]]</span><br><span class="line">-----</span><br><span class="line">[7. 1. 5. 6. 7. 1. 2. 4. 1. 5. 7. 4.]</span><br><span class="line">-----</span><br><span class="line">[[7. 1.]</span><br><span class="line"> [5. 6.]</span><br><span class="line"> [7. 1.]</span><br><span class="line"> [2. 4.]</span><br><span class="line"> [1. 5.]</span><br><span class="line"> [7. 4.]]</span><br><span class="line">-----</span><br><span class="line">[[7. 5. 7. 2. 1. 7.]</span><br><span class="line"> [1. 6. 1. 4. 5. 4.]]</span><br><span class="line">#reshape()自动计算列,只要将最后一个数改为-1即可。</span><br><span class="line">b.reshape(3,-1)</span><br><span class="line">array([[7., 1., 5., 6.],</span><br><span class="line">       [7., 1., 2., 4.],</span><br><span class="line">       [1., 5., 7., 4.]])</span><br><span class="line">#矩阵拼接</span><br><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.floor(10*np.random.random((2,2)))</span><br><span class="line">b &#x3D; np.floor(10*np.random.random((2,2)))</span><br><span class="line">print(a)</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">print(b)</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#横向拼接</span><br><span class="line">print(np.hstack((a,b)))</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#纵向拼接</span><br><span class="line">print(np.vstack((a,b)))</span><br><span class="line">[[1. 8.]</span><br><span class="line"> [7. 6.]]</span><br><span class="line">-----</span><br><span class="line">[[3. 9.]</span><br><span class="line"> [7. 5.]]</span><br><span class="line">-----</span><br><span class="line">[[1. 8. 3. 9.]</span><br><span class="line"> [7. 6. 7. 5.]]</span><br><span class="line">-----</span><br><span class="line">[[1. 8.]</span><br><span class="line"> [7. 6.]</span><br><span class="line"> [3. 9.]</span><br><span class="line"> [7. 5.]]</span><br><span class="line">#矩阵切分</span><br><span class="line">a &#x3D; np.floor(10*np.random.random((2,12)))</span><br><span class="line">print(a)</span><br><span class="line">[[4. 3. 0. 7. 6. 7. 7. 8. 9. 1. 2. 7.]</span><br><span class="line"> [5. 5. 9. 1. 1. 4. 5. 5. 4. 2. 8. 8.]]</span><br><span class="line">#横向切分</span><br><span class="line">#切成3份</span><br><span class="line">np.hsplit(a,3)</span><br><span class="line">[array([[4., 3., 0., 7.],</span><br><span class="line">        [5., 5., 9., 1.]]), array([[6., 7., 7., 8.],</span><br><span class="line">        [1., 4., 5., 5.]]), array([[9., 1., 2., 7.],</span><br><span class="line">        [4., 2., 8., 8.]])]</span><br><span class="line">#横向指定位置切分</span><br><span class="line">np.hsplit(a,(3,4))</span><br><span class="line">[array([[4., 3., 0.],</span><br><span class="line">        [5., 5., 9.]]), array([[7.],</span><br><span class="line">        [1.]]), array([[6., 7., 7., 8., 9., 1., 2., 7.],</span><br><span class="line">        [1., 4., 5., 5., 4., 2., 8., 8.]])]</span><br><span class="line">#纵向切分</span><br><span class="line">a &#x3D; np.floor(10*np.random.random((12,2)))</span><br><span class="line">print(a)</span><br><span class="line">print(np.vsplit(a,3))</span><br><span class="line">[[8. 4.]</span><br><span class="line"> [6. 1.]</span><br><span class="line"> [0. 2.]</span><br><span class="line"> [7. 5.]</span><br><span class="line"> [7. 6.]</span><br><span class="line"> [7. 6.]</span><br><span class="line"> [3. 3.]</span><br><span class="line"> [8. 0.]</span><br><span class="line"> [5. 6.]</span><br><span class="line"> [1. 3.]</span><br><span class="line"> [1. 2.]</span><br><span class="line"> [1. 5.]]</span><br><span class="line">[array([[8., 4.],</span><br><span class="line">       [6., 1.],</span><br><span class="line">       [0., 2.],</span><br><span class="line">       [7., 5.]]), array([[7., 6.],</span><br><span class="line">       [7., 6.],</span><br><span class="line">       [3., 3.],</span><br><span class="line">       [8., 0.]]), array([[5., 6.],</span><br><span class="line">       [1., 3.],</span><br><span class="line">       [1., 2.],</span><br><span class="line">       [1., 5.]])]</span><br><span class="line">#复制的不同操作</span><br><span class="line">#赋值，a、b变量指向了相同的位置，当a和b二者任意出现改变时，数据均会发生变化</span><br><span class="line">a &#x3D; np.arange(12)</span><br><span class="line">print(a)</span><br><span class="line">b &#x3D; a</span><br><span class="line">print(a is b)</span><br><span class="line">b.shape &#x3D; (3,4)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br><span class="line">[ 0  1  2  3  4  5  6  7  8  9 10 11]</span><br><span class="line">True</span><br><span class="line">(3, 4)</span><br><span class="line">4562436864</span><br><span class="line">4562436864</span><br><span class="line">#浅复制</span><br><span class="line">c &#x3D; a.view()</span><br><span class="line">print(c is a)</span><br><span class="line">c.shape &#x3D; (2,6)</span><br><span class="line">print(a.shape)</span><br><span class="line">c[1,0] &#x3D; 123</span><br><span class="line">print(a)</span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br><span class="line">False</span><br><span class="line">(3, 4)</span><br><span class="line">[[   0 1234    2    3]</span><br><span class="line"> [1234    5  123 1234]</span><br><span class="line"> [   8    9   10   11]]</span><br><span class="line">4562436864</span><br><span class="line">4562436864</span><br><span class="line">#深复制</span><br><span class="line">a &#x3D; np.arange(12)</span><br><span class="line">b &#x3D; a.copy()</span><br><span class="line">a.shape &#x3D; (3,4)</span><br><span class="line">b.shape &#x3D; (2,6)</span><br><span class="line">a[0,0] &#x3D; 123</span><br><span class="line">b[1,0] &#x3D; 234</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br><span class="line">[[123   1   2   3]</span><br><span class="line"> [  4   5   6   7]</span><br><span class="line"> [  8   9  10  11]]</span><br><span class="line">[[  0   1   2   3   4   5]</span><br><span class="line"> [234   7   8   9  10  11]]</span><br><span class="line">4562468656</span><br><span class="line">4562467776</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-05.%E7%9F%A9%E9%98%B5%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,6 +448,85 @@
 
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">                  门店  区域         11月总销售        11月总毛利         目标销售     实际完成  \</span><br><span class="line">0  好药师大药房连锁有限公司团结新村店  蔡静  103617.600000  37506.576000  2898.394406  1643.08   </span><br><span class="line">1    武汉市好药师文华大药房有限公司  蔡静  136347.184988  46358.042896  3813.907272  3234.51   </span><br><span class="line">2    好药师大药房连锁有限公司七里店  蔡静  153700.000000  61480.000000  4299.300699  5682.10   </span><br><span class="line">3    好药师大药房连锁有限公司汉城店  蔡静  127200.000000  49544.400000  3558.041958  4836.00   </span><br><span class="line">4  好药师大药房连锁有限公司太子水榭店  蔡静   74200.000000  23744.000000  2075.524476   657.38   </span><br><span class="line"></span><br><span class="line">      销售完成率   实际完成.1  </span><br><span class="line">0  0.566893   528.70  </span><br><span class="line">1  0.848083  1085.40  </span><br><span class="line">2  1.321634  1728.18  </span><br><span class="line">3  1.359175  2116.98  </span><br><span class="line">4  0.316730     4.48  </span><br><span class="line">(48, 8)</span><br><span class="line"># 算数运算</span><br><span class="line">#print(df_sales[&quot;销售完成率&quot;]*100)</span><br><span class="line">new_column &#x3D; df_sales[&quot;目标销售&quot;]+df_sales[&quot;实际完成&quot;]</span><br><span class="line">df_sales[&#39;销售&#39;] &#x3D; new_column</span><br><span class="line">print(df_sales.shape)</span><br><span class="line">(48, 9)</span><br><span class="line">#取最大值</span><br><span class="line">print(df_sales[&quot;11月总毛利&quot;]&#x2F;df_sales[&quot;11月总毛利&quot;].max())</span><br><span class="line">0     0.085602</span><br><span class="line">1     0.105803</span><br><span class="line">2     0.140316</span><br><span class="line">3     0.113076</span><br><span class="line">4     0.054191</span><br><span class="line">5     0.047801</span><br><span class="line">6     0.244915</span><br><span class="line">7     1.000000</span><br><span class="line">8     0.027616</span><br><span class="line">9     0.051923</span><br><span class="line">10    0.125299</span><br><span class="line">11    0.156853</span><br><span class="line">12    0.205408</span><br><span class="line">13    0.280382</span><br><span class="line">14    0.205408</span><br><span class="line">15    0.066929</span><br><span class="line">16    0.251054</span><br><span class="line">17    0.116553</span><br><span class="line">18    0.124250</span><br><span class="line">19    0.067784</span><br><span class="line">20    0.057423</span><br><span class="line">21    0.000000</span><br><span class="line">22    0.212081</span><br><span class="line">23    0.064224</span><br><span class="line">24    0.136869</span><br><span class="line">25    0.000000</span><br><span class="line">26    0.693822</span><br><span class="line">27    0.337782</span><br><span class="line">28    0.089752</span><br><span class="line">29    0.000000</span><br><span class="line">30    0.139677</span><br><span class="line">31    0.073400</span><br><span class="line">32    0.198362</span><br><span class="line">33    0.145881</span><br><span class="line">34    0.109551</span><br><span class="line">35    0.035946</span><br><span class="line">36    0.087298</span><br><span class="line">37    0.284832</span><br><span class="line">38    0.240555</span><br><span class="line">39    0.086614</span><br><span class="line">40    0.353353</span><br><span class="line">41    0.077599</span><br><span class="line">42    0.156110</span><br><span class="line">43    0.102704</span><br><span class="line">44    0.077350</span><br><span class="line">45    0.090379</span><br><span class="line">46    0.120506</span><br><span class="line">47    0.048887</span><br><span class="line">Name: 11月总毛利, dtype: float64</span><br><span class="line">#排序</span><br><span class="line">df_sales.sort_values(&quot;11月总毛利&quot;,inplace&#x3D;True)</span><br><span class="line">print(df_sales[&quot;11月总毛利&quot;])</span><br><span class="line">29         0.000000</span><br><span class="line">25         0.000000</span><br><span class="line">21         0.000000</span><br><span class="line">8      12100.000000</span><br><span class="line">35     15750.000000</span><br><span class="line">5      20944.000000</span><br><span class="line">47     21420.000000</span><br><span class="line">9      22750.000000</span><br><span class="line">4      23744.000000</span><br><span class="line">20     25160.000000</span><br><span class="line">23     28139.925000</span><br><span class="line">15     29325.000000</span><br><span class="line">19     29699.610400</span><br><span class="line">31     32160.400000</span><br><span class="line">44     33891.000000</span><br><span class="line">41     34000.000000</span><br><span class="line">0      37506.576000</span><br><span class="line">39     37950.000000</span><br><span class="line">36     38250.000000</span><br><span class="line">28     39325.000000</span><br><span class="line">45     39600.000000</span><br><span class="line">43     45000.000000</span><br><span class="line">1      46358.042896</span><br><span class="line">34     48000.000000</span><br><span class="line">3      49544.400000</span><br><span class="line">17     51068.000000</span><br><span class="line">46     52800.000000</span><br><span class="line">18     54440.670000</span><br><span class="line">10     54900.080896</span><br><span class="line">24     59969.500000</span><br><span class="line">30     61200.000000</span><br><span class="line">2      61480.000000</span><br><span class="line">33     63918.000000</span><br><span class="line">42     68400.000000</span><br><span class="line">11     68725.552000</span><br><span class="line">32     86912.812541</span><br><span class="line">14     90000.000000</span><br><span class="line">12     90000.192024</span><br><span class="line">22     92923.865784</span><br><span class="line">38    105400.000000</span><br><span class="line">6     107310.000000</span><br><span class="line">16    110000.000000</span><br><span class="line">13    122850.000000</span><br><span class="line">37    124800.000000</span><br><span class="line">27    148000.000000</span><br><span class="line">40    154822.662039</span><br><span class="line">26    304000.000000</span><br><span class="line">7     438152.548219</span><br><span class="line">Name: 11月总毛利, dtype: float64</span><br><span class="line">#降序排列</span><br><span class="line">df_sales.sort_values(&quot;11月总毛利&quot;,inplace&#x3D;True,ascending&#x3D;False)</span><br><span class="line">print(df_sales[&quot;11月总毛利&quot;])</span><br><span class="line">7     438152.548219</span><br><span class="line">26    304000.000000</span><br><span class="line">40    154822.662039</span><br><span class="line">27    148000.000000</span><br><span class="line">37    124800.000000</span><br><span class="line">13    122850.000000</span><br><span class="line">16    110000.000000</span><br><span class="line">6     107310.000000</span><br><span class="line">38    105400.000000</span><br><span class="line">22     92923.865784</span><br><span class="line">12     90000.192024</span><br><span class="line">14     90000.000000</span><br><span class="line">32     86912.812541</span><br><span class="line">11     68725.552000</span><br><span class="line">42     68400.000000</span><br><span class="line">33     63918.000000</span><br><span class="line">2      61480.000000</span><br><span class="line">30     61200.000000</span><br><span class="line">24     59969.500000</span><br><span class="line">10     54900.080896</span><br><span class="line">18     54440.670000</span><br><span class="line">46     52800.000000</span><br><span class="line">17     51068.000000</span><br><span class="line">3      49544.400000</span><br><span class="line">34     48000.000000</span><br><span class="line">1      46358.042896</span><br><span class="line">43     45000.000000</span><br><span class="line">45     39600.000000</span><br><span class="line">28     39325.000000</span><br><span class="line">36     38250.000000</span><br><span class="line">39     37950.000000</span><br><span class="line">0      37506.576000</span><br><span class="line">41     34000.000000</span><br><span class="line">44     33891.000000</span><br><span class="line">31     32160.400000</span><br><span class="line">19     29699.610400</span><br><span class="line">15     29325.000000</span><br><span class="line">23     28139.925000</span><br><span class="line">20     25160.000000</span><br><span class="line">4      23744.000000</span><br><span class="line">9      22750.000000</span><br><span class="line">47     21420.000000</span><br><span class="line">5      20944.000000</span><br><span class="line">35     15750.000000</span><br><span class="line">8      12100.000000</span><br><span class="line">21         0.000000</span><br><span class="line">25         0.000000</span><br><span class="line">29         0.000000</span><br><span class="line">Name: 11月总毛利, dtype: float64</span><br><span class="line">#求每个区域当天实际总销售</span><br><span class="line">area_sales &#x3D; df_sales.pivot_table(index &#x3D; &quot;区域&quot;,values &#x3D; &quot;实际完成&quot;,aggfunc &#x3D; numpy.sum)</span><br><span class="line">print(area_sales.sort_values(&quot;实际完成&quot;))</span><br><span class="line">         实际完成</span><br><span class="line">区域           </span><br><span class="line">熊红萍   9546.41</span><br><span class="line">廖燕妮  29542.66</span><br><span class="line">胡萍   48549.48</span><br><span class="line">李宁   65614.81</span><br><span class="line">涂梦芸  75627.41</span><br><span class="line">蔡静   78091.85</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09.%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="千里之行，始于足下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carlos的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09.%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-09.折线图绘制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-14 01:51:15" itemprop="dateModified" datetime="2023-08-14T01:51:15+00:00">2023-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">data &#x3D; pd.read_excel(&quot;2017.12.01-2018.12.01日销售汇总.xls&quot;)</span><br><span class="line">sales &#x3D; data[365:501][&quot;实收金额&quot;]</span><br><span class="line">date &#x3D; data[365:501][&quot;日期&quot;]</span><br><span class="line">print(date)</span><br><span class="line">plt.plot(date,sales)</span><br><span class="line">plt.xticks(rotation&#x3D;45)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">365   2017-12-03</span><br><span class="line">366   2017-12-04</span><br><span class="line">367   2017-12-05</span><br><span class="line">368   2017-12-06</span><br><span class="line">369   2017-12-07</span><br><span class="line">370   2017-12-08</span><br><span class="line">371   2017-12-09</span><br><span class="line">372   2017-12-10</span><br><span class="line">373   2017-12-11</span><br><span class="line">374   2017-12-12</span><br><span class="line">375   2017-12-13</span><br><span class="line">376   2017-12-14</span><br><span class="line">377   2017-12-15</span><br><span class="line">378   2017-12-16</span><br><span class="line">379   2017-12-17</span><br><span class="line">380   2017-12-18</span><br><span class="line">381   2017-12-19</span><br><span class="line">382   2017-12-20</span><br><span class="line">383   2017-12-21</span><br><span class="line">384   2017-12-22</span><br><span class="line">385   2017-12-23</span><br><span class="line">386   2017-12-24</span><br><span class="line">387   2017-12-25</span><br><span class="line">388   2017-12-26</span><br><span class="line">389   2017-12-27</span><br><span class="line">390   2017-12-28</span><br><span class="line">391   2017-12-29</span><br><span class="line">392   2017-12-30</span><br><span class="line">393   2017-12-31</span><br><span class="line">394   2018-01-01</span><br><span class="line">         ...    </span><br><span class="line">471   2018-03-19</span><br><span class="line">472   2018-03-20</span><br><span class="line">473   2018-03-21</span><br><span class="line">474   2018-03-22</span><br><span class="line">475   2018-03-23</span><br><span class="line">476   2018-03-24</span><br><span class="line">477   2018-03-25</span><br><span class="line">478   2018-03-26</span><br><span class="line">479   2018-03-27</span><br><span class="line">480   2018-03-28</span><br><span class="line">481   2018-03-29</span><br><span class="line">482   2018-03-30</span><br><span class="line">483   2018-03-31</span><br><span class="line">484   2018-04-01</span><br><span class="line">485   2018-04-02</span><br><span class="line">486   2018-04-03</span><br><span class="line">487   2018-04-04</span><br><span class="line">488   2018-04-05</span><br><span class="line">489   2018-04-06</span><br><span class="line">490   2018-04-07</span><br><span class="line">491   2018-04-08</span><br><span class="line">492   2018-04-09</span><br><span class="line">493   2018-04-10</span><br><span class="line">494   2018-04-11</span><br><span class="line">495   2018-04-12</span><br><span class="line">496   2018-04-13</span><br><span class="line">497   2018-04-14</span><br><span class="line">498   2018-04-15</span><br><span class="line">499   2018-04-16</span><br><span class="line">500          NaT</span><br><span class="line">Name: 日期, Length: 136, dtype: datetime64[ns]</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09-%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_0_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09-%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_0_1.png" alt="png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/matplotlib/"># matplotlib</a></p>
+
       
     </div>
 
@@ -2422,85 +2575,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09.%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Carlos">
-      <meta itemprop="description" content="千里之行，始于足下。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carlos的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09.%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-09.折线图绘制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-14 01:51:15" itemprop="dateModified" datetime="2023-08-14T01:51:15+00:00">2023-08-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">data &#x3D; pd.read_excel(&quot;2017.12.01-2018.12.01日销售汇总.xls&quot;)</span><br><span class="line">sales &#x3D; data[365:501][&quot;实收金额&quot;]</span><br><span class="line">date &#x3D; data[365:501][&quot;日期&quot;]</span><br><span class="line">print(date)</span><br><span class="line">plt.plot(date,sales)</span><br><span class="line">plt.xticks(rotation&#x3D;45)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">365   2017-12-03</span><br><span class="line">366   2017-12-04</span><br><span class="line">367   2017-12-05</span><br><span class="line">368   2017-12-06</span><br><span class="line">369   2017-12-07</span><br><span class="line">370   2017-12-08</span><br><span class="line">371   2017-12-09</span><br><span class="line">372   2017-12-10</span><br><span class="line">373   2017-12-11</span><br><span class="line">374   2017-12-12</span><br><span class="line">375   2017-12-13</span><br><span class="line">376   2017-12-14</span><br><span class="line">377   2017-12-15</span><br><span class="line">378   2017-12-16</span><br><span class="line">379   2017-12-17</span><br><span class="line">380   2017-12-18</span><br><span class="line">381   2017-12-19</span><br><span class="line">382   2017-12-20</span><br><span class="line">383   2017-12-21</span><br><span class="line">384   2017-12-22</span><br><span class="line">385   2017-12-23</span><br><span class="line">386   2017-12-24</span><br><span class="line">387   2017-12-25</span><br><span class="line">388   2017-12-26</span><br><span class="line">389   2017-12-27</span><br><span class="line">390   2017-12-28</span><br><span class="line">391   2017-12-29</span><br><span class="line">392   2017-12-30</span><br><span class="line">393   2017-12-31</span><br><span class="line">394   2018-01-01</span><br><span class="line">         ...    </span><br><span class="line">471   2018-03-19</span><br><span class="line">472   2018-03-20</span><br><span class="line">473   2018-03-21</span><br><span class="line">474   2018-03-22</span><br><span class="line">475   2018-03-23</span><br><span class="line">476   2018-03-24</span><br><span class="line">477   2018-03-25</span><br><span class="line">478   2018-03-26</span><br><span class="line">479   2018-03-27</span><br><span class="line">480   2018-03-28</span><br><span class="line">481   2018-03-29</span><br><span class="line">482   2018-03-30</span><br><span class="line">483   2018-03-31</span><br><span class="line">484   2018-04-01</span><br><span class="line">485   2018-04-02</span><br><span class="line">486   2018-04-03</span><br><span class="line">487   2018-04-04</span><br><span class="line">488   2018-04-05</span><br><span class="line">489   2018-04-06</span><br><span class="line">490   2018-04-07</span><br><span class="line">491   2018-04-08</span><br><span class="line">492   2018-04-09</span><br><span class="line">493   2018-04-10</span><br><span class="line">494   2018-04-11</span><br><span class="line">495   2018-04-12</span><br><span class="line">496   2018-04-13</span><br><span class="line">497   2018-04-14</span><br><span class="line">498   2018-04-15</span><br><span class="line">499   2018-04-16</span><br><span class="line">500          NaT</span><br><span class="line">Name: 日期, Length: 136, dtype: datetime64[ns]</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09-%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_0_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-09-%E6%8A%98%E7%BA%BF%E5%9B%BE%E7%BB%98%E5%88%B6%E2%80%9D/output_0_1.png" alt="png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/matplotlib/"># matplotlib</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-11.%E6%9F%B1%E5%BD%A2%E5%9B%BE%E4%B8%8E%E7%9B%92%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2782,730 +2856,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14.%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Carlos">
-      <meta itemprop="description" content="千里之行，始于足下。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carlos的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14.%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-14.单变量分析绘图</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-14 01:51:15" itemprop="dateModified" datetime="2023-08-14T01:51:15+00:00">2023-08-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">from scipy import stats,integrate</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sns.set(color_codes &#x3D; True)</span><br><span class="line">x &#x3D; np.random.normal(size&#x3D;100)</span><br><span class="line">sns.distplot(x,kde&#x3D;False)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1510af28&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_1_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sns.distplot(x,bins&#x3D;20,kde&#x3D;False)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a1505f860&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_2_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_2_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; np.random.gamma(6,size&#x3D;200)</span><br><span class="line">sns.distplot(x,kde&#x3D;False,fit&#x3D;stats.gamma)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a153a0240&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_3_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mean,cov &#x3D; [0,1],[(1,.5),(.5,1)]</span><br><span class="line">data &#x3D; np.random.multivariate_normal(mean,cov,200)</span><br><span class="line">df &#x3D; pd.DataFrame(data,columns&#x3D;[&quot;x&quot;,&quot;y&quot;])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">x</th>
-<th align="left">y</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0</td>
-<td align="left">-0.174087</td>
-<td align="left">1.795256</td>
-</tr>
-<tr>
-<td align="left">1</td>
-<td align="left">-0.416757</td>
-<td align="left">0.638361</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">-1.188138</td>
-<td align="left">-0.331589</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">-0.609992</td>
-<td align="left">0.435072</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">-1.839588</td>
-<td align="left">1.710629</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">-0.636881</td>
-<td align="left">0.890326</td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left">-0.833977</td>
-<td align="left">0.792370</td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left">1.789158</td>
-<td align="left">2.060371</td>
-</tr>
-<tr>
-<td align="left">8</td>
-<td align="left">1.156777</td>
-<td align="left">0.663219</td>
-</tr>
-<tr>
-<td align="left">9</td>
-<td align="left">0.423476</td>
-<td align="left">0.673290</td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left">-0.412169</td>
-<td align="left">0.751990</td>
-</tr>
-<tr>
-<td align="left">11</td>
-<td align="left">-1.126475</td>
-<td align="left">0.535133</td>
-</tr>
-<tr>
-<td align="left">12</td>
-<td align="left">1.323243</td>
-<td align="left">1.533676</td>
-</tr>
-<tr>
-<td align="left">13</td>
-<td align="left">-0.023044</td>
-<td align="left">-0.599542</td>
-</tr>
-<tr>
-<td align="left">14</td>
-<td align="left">0.691180</td>
-<td align="left">0.879479</td>
-</tr>
-<tr>
-<td align="left">15</td>
-<td align="left">1.478605</td>
-<td align="left">2.477569</td>
-</tr>
-<tr>
-<td align="left">16</td>
-<td align="left">-1.637043</td>
-<td align="left">-0.499630</td>
-</tr>
-<tr>
-<td align="left">17</td>
-<td align="left">-0.094884</td>
-<td align="left">2.142044</td>
-</tr>
-<tr>
-<td align="left">18</td>
-<td align="left">-0.989239</td>
-<td align="left">1.218270</td>
-</tr>
-<tr>
-<td align="left">19</td>
-<td align="left">1.420987</td>
-<td align="left">1.013807</td>
-</tr>
-<tr>
-<td align="left">20</td>
-<td align="left">0.360396</td>
-<td align="left">2.465208</td>
-</tr>
-<tr>
-<td align="left">21</td>
-<td align="left">1.358501</td>
-<td align="left">1.184887</td>
-</tr>
-<tr>
-<td align="left">22</td>
-<td align="left">2.339145</td>
-<td align="left">1.285469</td>
-</tr>
-<tr>
-<td align="left">23</td>
-<td align="left">1.282484</td>
-<td align="left">2.062299</td>
-</tr>
-<tr>
-<td align="left">24</td>
-<td align="left">0.854708</td>
-<td align="left">0.706735</td>
-</tr>
-<tr>
-<td align="left">25</td>
-<td align="left">-0.223393</td>
-<td align="left">-0.172632</td>
-</tr>
-<tr>
-<td align="left">26</td>
-<td align="left">-0.513652</td>
-<td align="left">0.535946</td>
-</tr>
-<tr>
-<td align="left">27</td>
-<td align="left">1.207449</td>
-<td align="left">1.181039</td>
-</tr>
-<tr>
-<td align="left">28</td>
-<td align="left">-1.219564</td>
-<td align="left">-1.178302</td>
-</tr>
-<tr>
-<td align="left">29</td>
-<td align="left">-0.855500</td>
-<td align="left">0.167194</td>
-</tr>
-<tr>
-<td align="left">…</td>
-<td align="left">…</td>
-<td align="left">…</td>
-</tr>
-<tr>
-<td align="left">170</td>
-<td align="left">1.022425</td>
-<td align="left">1.816807</td>
-</tr>
-<tr>
-<td align="left">171</td>
-<td align="left">0.344980</td>
-<td align="left">0.766577</td>
-</tr>
-<tr>
-<td align="left">172</td>
-<td align="left">1.043292</td>
-<td align="left">0.955718</td>
-</tr>
-<tr>
-<td align="left">173</td>
-<td align="left">0.765037</td>
-<td align="left">2.321773</td>
-</tr>
-<tr>
-<td align="left">174</td>
-<td align="left">0.683540</td>
-<td align="left">0.501221</td>
-</tr>
-<tr>
-<td align="left">175</td>
-<td align="left">1.188854</td>
-<td align="left">0.022803</td>
-</tr>
-<tr>
-<td align="left">176</td>
-<td align="left">-0.287907</td>
-<td align="left">-0.166137</td>
-</tr>
-<tr>
-<td align="left">177</td>
-<td align="left">-0.778977</td>
-<td align="left">0.036364</td>
-</tr>
-<tr>
-<td align="left">178</td>
-<td align="left">-1.875389</td>
-<td align="left">0.689938</td>
-</tr>
-<tr>
-<td align="left">179</td>
-<td align="left">0.183550</td>
-<td align="left">1.683339</td>
-</tr>
-<tr>
-<td align="left">180</td>
-<td align="left">0.220839</td>
-<td align="left">1.396213</td>
-</tr>
-<tr>
-<td align="left">181</td>
-<td align="left">0.660952</td>
-<td align="left">1.921363</td>
-</tr>
-<tr>
-<td align="left">182</td>
-<td align="left">-2.357542</td>
-<td align="left">1.145418</td>
-</tr>
-<tr>
-<td align="left">183</td>
-<td align="left">0.521454</td>
-<td align="left">0.304456</td>
-</tr>
-<tr>
-<td align="left">184</td>
-<td align="left">-0.321098</td>
-<td align="left">-1.072025</td>
-</tr>
-<tr>
-<td align="left">185</td>
-<td align="left">-0.265391</td>
-<td align="left">1.166742</td>
-</tr>
-<tr>
-<td align="left">186</td>
-<td align="left">1.182235</td>
-<td align="left">2.652254</td>
-</tr>
-<tr>
-<td align="left">187</td>
-<td align="left">0.920143</td>
-<td align="left">1.772478</td>
-</tr>
-<tr>
-<td align="left">188</td>
-<td align="left">0.620841</td>
-<td align="left">1.806727</td>
-</tr>
-<tr>
-<td align="left">189</td>
-<td align="left">-0.892951</td>
-<td align="left">0.177710</td>
-</tr>
-<tr>
-<td align="left">190</td>
-<td align="left">-0.463518</td>
-<td align="left">2.034266</td>
-</tr>
-<tr>
-<td align="left">191</td>
-<td align="left">-0.031959</td>
-<td align="left">0.967620</td>
-</tr>
-<tr>
-<td align="left">192</td>
-<td align="left">-0.412957</td>
-<td align="left">0.324511</td>
-</tr>
-<tr>
-<td align="left">193</td>
-<td align="left">-0.021698</td>
-<td align="left">0.949692</td>
-</tr>
-<tr>
-<td align="left">194</td>
-<td align="left">1.897446</td>
-<td align="left">2.806375</td>
-</tr>
-<tr>
-<td align="left">195</td>
-<td align="left">-0.346429</td>
-<td align="left">0.899780</td>
-</tr>
-<tr>
-<td align="left">196</td>
-<td align="left">-0.320803</td>
-<td align="left">-0.144683</td>
-</tr>
-<tr>
-<td align="left">197</td>
-<td align="left">-0.332870</td>
-<td align="left">0.751261</td>
-</tr>
-<tr>
-<td align="left">198</td>
-<td align="left">-0.579072</td>
-<td align="left">0.318083</td>
-</tr>
-<tr>
-<td align="left">199</td>
-<td align="left">-0.889261</td>
-<td align="left">0.091241</td>
-</tr>
-</tbody></table>
-<p>200 rows × 2 columns</p>
-<p>观察两个变量之间的分布关系最好用散点图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sns.jointplot(x&#x3D;&quot;x&quot;,y&#x3D;&quot;y&quot;,data&#x3D;df)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;seaborn.axisgrid.JointGrid at 0x1a22fb1cf8&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_2.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_6_2.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x,y &#x3D; np.random.multivariate_normal(mean,cov,1000).T</span><br><span class="line">with sns.axes_style(&quot;white&quot;):</span><br><span class="line">    sns.jointplot(x&#x3D;x,y&#x3D;y,data&#x3D;df,kind&#x3D;&quot;hex&quot;,color&#x3D;&#39;k&#39;)</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br><span class="line">&#x2F;anaconda3&#x2F;lib&#x2F;python3.6&#x2F;site-packages&#x2F;matplotlib&#x2F;axes&#x2F;_axes.py:6462: UserWarning: The &#39;normed&#39; kwarg is deprecated, and has been replaced by the &#39;density&#39; kwarg.</span><br><span class="line">  warnings.warn(&quot;The &#39;normed&#39; kwarg is deprecated, and has been &quot;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_7_1.png" alt="png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iris &#x3D; sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">sns.pairplot(iris)</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid at 0x1a23d144e0&gt;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png"><img src="https://www.cishao.cn/2018/12/07/%E2%80%9Cpython%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-14-%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E7%BB%98%E5%9B%BE%E2%80%9D/output_8_1.png" alt="png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cishao.cn/tags/seaborn/"># seaborn</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -3585,7 +2935,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

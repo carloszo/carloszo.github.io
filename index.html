@@ -164,6 +164,65 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/hello/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Carlos">
+      <meta itemprop="description" content="千里之行，始于足下。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Carlos的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/14/hello/" class="post-title-link" itemprop="url">hello</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-14 09:10:01 / 修改时间：09:10:02" itemprop="dateCreated datePublished" datetime="2023-08-14T09:10:01+00:00">2023-08-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>helloworld</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/BeautifulSoup%E7%94%B5%E5%BD%B1%E7%BD%91%E7%AB%99%E7%88%AC%E8%99%AB%E5%AE%9E%E4%BE%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -851,80 +910,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-04.Numpy%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Carlos">
-      <meta itemprop="description" content="千里之行，始于足下。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Carlos的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/07/python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98-04.Numpy%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">python数据分析与机器学习实战-04.Numpy常用函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-14 01:51:15" itemprop="dateModified" datetime="2023-08-14T01:51:15+00:00">2023-08-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.arange(4)</span><br><span class="line">print(a)</span><br><span class="line">#exp():返回e的n次方，e是一个常数为2.71828</span><br><span class="line">print(np.exp(a))</span><br><span class="line">#sqrt():开方</span><br><span class="line">print(np.sqrt(a))</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">[0 1 2 3]</span><br><span class="line">[ 1.          2.71828183  7.3890561  20.08553692]</span><br><span class="line">[0.         1.         1.41421356 1.73205081]</span><br><span class="line">#floor()：向下取整，例如3.5 取整后为3</span><br><span class="line">b &#x3D; np.floor(10*np.random.random((3,4)))</span><br><span class="line">print(b)</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#将矩阵拉为向量</span><br><span class="line">print(b.ravel())</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#调整结构</span><br><span class="line">b.shape &#x3D; (6,2)</span><br><span class="line">print(b)</span><br><span class="line">#行和列转换</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">print(b.T)</span><br><span class="line">[[7. 1. 5. 6.]</span><br><span class="line"> [7. 1. 2. 4.]</span><br><span class="line"> [1. 5. 7. 4.]]</span><br><span class="line">-----</span><br><span class="line">[7. 1. 5. 6. 7. 1. 2. 4. 1. 5. 7. 4.]</span><br><span class="line">-----</span><br><span class="line">[[7. 1.]</span><br><span class="line"> [5. 6.]</span><br><span class="line"> [7. 1.]</span><br><span class="line"> [2. 4.]</span><br><span class="line"> [1. 5.]</span><br><span class="line"> [7. 4.]]</span><br><span class="line">-----</span><br><span class="line">[[7. 5. 7. 2. 1. 7.]</span><br><span class="line"> [1. 6. 1. 4. 5. 4.]]</span><br><span class="line">#reshape()自动计算列,只要将最后一个数改为-1即可。</span><br><span class="line">b.reshape(3,-1)</span><br><span class="line">array([[7., 1., 5., 6.],</span><br><span class="line">       [7., 1., 2., 4.],</span><br><span class="line">       [1., 5., 7., 4.]])</span><br><span class="line">#矩阵拼接</span><br><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.floor(10*np.random.random((2,2)))</span><br><span class="line">b &#x3D; np.floor(10*np.random.random((2,2)))</span><br><span class="line">print(a)</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">print(b)</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#横向拼接</span><br><span class="line">print(np.hstack((a,b)))</span><br><span class="line">print(&quot;-----&quot;)</span><br><span class="line">#纵向拼接</span><br><span class="line">print(np.vstack((a,b)))</span><br><span class="line">[[1. 8.]</span><br><span class="line"> [7. 6.]]</span><br><span class="line">-----</span><br><span class="line">[[3. 9.]</span><br><span class="line"> [7. 5.]]</span><br><span class="line">-----</span><br><span class="line">[[1. 8. 3. 9.]</span><br><span class="line"> [7. 6. 7. 5.]]</span><br><span class="line">-----</span><br><span class="line">[[1. 8.]</span><br><span class="line"> [7. 6.]</span><br><span class="line"> [3. 9.]</span><br><span class="line"> [7. 5.]]</span><br><span class="line">#矩阵切分</span><br><span class="line">a &#x3D; np.floor(10*np.random.random((2,12)))</span><br><span class="line">print(a)</span><br><span class="line">[[4. 3. 0. 7. 6. 7. 7. 8. 9. 1. 2. 7.]</span><br><span class="line"> [5. 5. 9. 1. 1. 4. 5. 5. 4. 2. 8. 8.]]</span><br><span class="line">#横向切分</span><br><span class="line">#切成3份</span><br><span class="line">np.hsplit(a,3)</span><br><span class="line">[array([[4., 3., 0., 7.],</span><br><span class="line">        [5., 5., 9., 1.]]), array([[6., 7., 7., 8.],</span><br><span class="line">        [1., 4., 5., 5.]]), array([[9., 1., 2., 7.],</span><br><span class="line">        [4., 2., 8., 8.]])]</span><br><span class="line">#横向指定位置切分</span><br><span class="line">np.hsplit(a,(3,4))</span><br><span class="line">[array([[4., 3., 0.],</span><br><span class="line">        [5., 5., 9.]]), array([[7.],</span><br><span class="line">        [1.]]), array([[6., 7., 7., 8., 9., 1., 2., 7.],</span><br><span class="line">        [1., 4., 5., 5., 4., 2., 8., 8.]])]</span><br><span class="line">#纵向切分</span><br><span class="line">a &#x3D; np.floor(10*np.random.random((12,2)))</span><br><span class="line">print(a)</span><br><span class="line">print(np.vsplit(a,3))</span><br><span class="line">[[8. 4.]</span><br><span class="line"> [6. 1.]</span><br><span class="line"> [0. 2.]</span><br><span class="line"> [7. 5.]</span><br><span class="line"> [7. 6.]</span><br><span class="line"> [7. 6.]</span><br><span class="line"> [3. 3.]</span><br><span class="line"> [8. 0.]</span><br><span class="line"> [5. 6.]</span><br><span class="line"> [1. 3.]</span><br><span class="line"> [1. 2.]</span><br><span class="line"> [1. 5.]]</span><br><span class="line">[array([[8., 4.],</span><br><span class="line">       [6., 1.],</span><br><span class="line">       [0., 2.],</span><br><span class="line">       [7., 5.]]), array([[7., 6.],</span><br><span class="line">       [7., 6.],</span><br><span class="line">       [3., 3.],</span><br><span class="line">       [8., 0.]]), array([[5., 6.],</span><br><span class="line">       [1., 3.],</span><br><span class="line">       [1., 2.],</span><br><span class="line">       [1., 5.]])]</span><br><span class="line">#复制的不同操作</span><br><span class="line">#赋值，a、b变量指向了相同的位置，当a和b二者任意出现改变时，数据均会发生变化</span><br><span class="line">a &#x3D; np.arange(12)</span><br><span class="line">print(a)</span><br><span class="line">b &#x3D; a</span><br><span class="line">print(a is b)</span><br><span class="line">b.shape &#x3D; (3,4)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br><span class="line">[ 0  1  2  3  4  5  6  7  8  9 10 11]</span><br><span class="line">True</span><br><span class="line">(3, 4)</span><br><span class="line">4562436864</span><br><span class="line">4562436864</span><br><span class="line">#浅复制</span><br><span class="line">c &#x3D; a.view()</span><br><span class="line">print(c is a)</span><br><span class="line">c.shape &#x3D; (2,6)</span><br><span class="line">print(a.shape)</span><br><span class="line">c[1,0] &#x3D; 123</span><br><span class="line">print(a)</span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br><span class="line">False</span><br><span class="line">(3, 4)</span><br><span class="line">[[   0 1234    2    3]</span><br><span class="line"> [1234    5  123 1234]</span><br><span class="line"> [   8    9   10   11]]</span><br><span class="line">4562436864</span><br><span class="line">4562436864</span><br><span class="line">#深复制</span><br><span class="line">a &#x3D; np.arange(12)</span><br><span class="line">b &#x3D; a.copy()</span><br><span class="line">a.shape &#x3D; (3,4)</span><br><span class="line">b.shape &#x3D; (2,6)</span><br><span class="line">a[0,0] &#x3D; 123</span><br><span class="line">b[1,0] &#x3D; 234</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br><span class="line">[[123   1   2   3]</span><br><span class="line"> [  4   5   6   7]</span><br><span class="line"> [  8   9  10  11]]</span><br><span class="line">[[  0   1   2   3   4   5]</span><br><span class="line"> [234   7   8   9  10  11]]</span><br><span class="line">4562468656</span><br><span class="line">4562467776</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1004,7 +989,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
