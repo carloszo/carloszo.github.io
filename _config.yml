@@ -136,7 +136,7 @@ theme: next
 language: zh-Hans
 author: Carlos
 description: "千里之行，始于足下。"
-title: 猎头Carlos的博客
+title: Carlos的博客
 
 plugins: hexo-generate-feed
 
