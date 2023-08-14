@@ -164,7 +164,7 @@ backup:
       
 deploy:
     type: git
-    repository: https://github.com/carloszo/carloszo.github.io.git
+    repository: git@github.com:carloszo/carloszo.github.io.git
     branch: master
        
 
