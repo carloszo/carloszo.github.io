@@ -155,7 +155,7 @@ feed:
 backup:
     type: git
     repository:
-       github: git@github.com/carloszo/carloszo.github.io.git,backup
+       github: git@github.com:carloszo/carloszo.github.io.git,backup
        
 # backup:
 #     type: git
